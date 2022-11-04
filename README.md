@@ -44,14 +44,10 @@ If you're thirsty (or not), find restaurants/bars near you to grab a Beer. Selec
 | `POST`     | `/signup`                          | Sends Sign Up info to the server and creates user in the DB. | {  email, password  }                                    |
 | `GET`      | `/private/profile`            | Private route. Renders `profile` form view.             |                                                          |
 | `PUT`      | `/private/edit-profile`            | Private route. Sends edit-profile info to server and updates user in DB. | { email, password, [firstName], [lastName], [imageUrl] } |
-| `GET`      | `/private/favoriteBeer`               | Private route. Render the `favorites` view.                  |                                                          |
-| `POST`     | `/private/favoriteBeer`              | Private route. Adds a new favorite for the current user.     | { name, cuisine, city, } 
-| `GET`      | `/private/favoriteRestaurant`               | Private route. Render the `favorites` view.                  |                                                          |
-| `POST`     | `/private/favoriteRestaurant`              | Private route. Adds a new favorite for the current user.     | { name, cuisine, city, }                                 |
-| `DELETE`   | `/private/favoriteRestaurant/:restaurantId` | Private route. Deletes the existing favorite from the current user. |
-| `GET`   | `/private/favoriteRestaurant/:restaurantId` | Private route. Selects the existing favorite from the current user. |                                                          |
-| `DELETE`   | `/private/favoriteBeer/:beerId` | Private route. Deletes the existing favorite from the current user. |  
-| `GET`   | `/private/favoriteBeer/:beerId` | Private route. Selects the existing favorite from the current user. |                                                         |
+| `GET`      | `/private/favorites`               | Private route. Render the `favorites` view.                  |                                                          |
+| `POST`     | `/private/favorites`              | Private route. Adds a new favorite for the current user.     | { name, cuisine, city, }                                 |
+| `DELETE`   | `/private/favoriteRestaurant/:restaurantId` | Private route. Deletes the existing favorite from the current user. |                                                          |
+| `DELETE`   | `/private/favoriteBeer/:beerId` | Private route. Deletes the existing favorite from the current user. |                                                    |
 | `GET`      | `/restaurants`                     | Renders `restaurant-list` view.                              |                                                          |
 | `GET`      | `/restaurants/details/:id`         | Renders `restaurant-details` view for the particular restaurant. |  
 | `GET`      | `/beers`                     | Renders `beer-list` view.                              |                                                          |
