@@ -95,6 +95,7 @@ Beer model
 ```javascript
 {
   name: String,
+  imageUrl: String,
   style: String,
   brewery: String,
   quantity: String,
@@ -109,7 +110,11 @@ Review model (bonus)
 
 ```javascript
 {
-  ,
+  content: String,
+  author: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+  } 
 }
 
 ```
@@ -121,7 +126,6 @@ Review model (bonus)
 ## API's
 
 Google Maps/Zoomato/TripAdvisor
-OpenFoodFacts
 
 
 <br>
