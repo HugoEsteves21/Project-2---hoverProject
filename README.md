@@ -1,6 +1,4 @@
-# Project-2---hoverProject
-
-# Project Name
+# Thirsty
 
 <br>
 
@@ -8,7 +6,8 @@
 
 ## Description
 
-Search platform for restaurants in Barcelona and creating the favorite list of restaurants.
+
+If you're thirsty (or not), find restaurants/bars near you to grab a Beer. Select the beer you had from the database and if not there, add that new beer.
 
 
 
@@ -18,14 +17,13 @@ Search platform for restaurants in Barcelona and creating the favorite list of r
 
 - **404** - As a user I want to see a nice 404 page when I go to a page that doesn’t exist so that I know it was my fault
 - **500** - As a user I want to see a nice error page when the super team screws it up so that I know that is not my fault
-- **homepage** - As a user I want to be able to access the homepage and filter by type of restaurant, log in and sign up. 
-- **sign up** - As a user I want to sign up on the web page so that I can add favorite restaurants to my list.
-- **login** - As a user I want to be able to log in on the web page so that I can get back to my account
-- **logout** - As a user I want to be able to log out from the web page so that I can make sure no one will access my account
-- **favorite list** - As a user I want to see the list of my favorite and delete them.
-- **edit user** - As a user I want to be able to edit my profile.
-- **result** - As a user I want to see the list of restaurant filter by my preferences.
-- **restaurant listing** - As a user I want to see more details of the restaurant, be able to call them and visit their website and save it as favorites.
+- **homepage** - As a user I want to be able to access the homepage and filter by type of restaurant, log in and sign up.
+- **sign up** - As a user I want to sign up on the web page so that I can find a nice spot to grab a beer.
+- **login** - As a user I want to be able to log in on the web page so that I can get back to my account.
+- **logout** - As a user I want to be able to log out from the web page so that I can make sure no one will access my account.
+- **profile menu** - As a user I want to be able to see the beers I tried and the locations I visited.
+- **search for specific beer** - As a user I want to be able to search for a specific beer.
+- **search for specific bar/map** - As a user I want to be able to search for a specific restaurant/bar.
 
 
 
@@ -44,13 +42,20 @@ Search platform for restaurants in Barcelona and creating the favorite list of r
 | `POST`     | `/login`                           | Sends Login form data to the server.                         | { email, password }                                      |
 | `GET`      | `/signup`                          | Renders `signup` form view.                                  |                                                          |
 | `POST`     | `/signup`                          | Sends Sign Up info to the server and creates user in the DB. | {  email, password  }                                    |
-| `GET`      | `/private/edit-profile`            | Private route. Renders `edit-profile` form view.             |                                                          |
+| `GET`      | `/private/profile`            | Private route. Renders `profile` form view.             |                                                          |
 | `PUT`      | `/private/edit-profile`            | Private route. Sends edit-profile info to server and updates user in DB. | { email, password, [firstName], [lastName], [imageUrl] } |
-| `GET`      | `/private/favorites`               | Private route. Render the `favorites` view.                  |                                                          |
-| `POST`     | `/private/favorites/`              | Private route. Adds a new favorite for the current user.     | { name, cuisine, city, }                                 |
-| `DELETE`   | `/private/favorites/:restaurantId` | Private route. Deletes the existing favorite from the current user. |                                                          |
+| `GET`      | `/private/favoriteBeer`               | Private route. Render the `favorites` view.                  |                                                          |
+| `POST`     | `/private/favoriteBeer`              | Private route. Adds a new favorite for the current user.     | { name, cuisine, city, } 
+| `GET`      | `/private/favoriteRestaurant`               | Private route. Render the `favorites` view.                  |                                                          |
+| `POST`     | `/private/favoriteRestaurant`              | Private route. Adds a new favorite for the current user.     | { name, cuisine, city, }                                 |
+| `DELETE`   | `/private/favoriteRestaurant/:restaurantId` | Private route. Deletes the existing favorite from the current user. |
+| `GET`   | `/private/favoriteRestaurant/:restaurantId` | Private route. Selects the existing favorite from the current user. |                                                          |
+| `DELETE`   | `/private/favoriteBeer/:beerId` | Private route. Deletes the existing favorite from the current user. |  
+| `GET`   | `/private/favoriteBeer/:beerId` | Private route. Selects the existing favorite from the current user. |                                                         |
 | `GET`      | `/restaurants`                     | Renders `restaurant-list` view.                              |                                                          |
-| `GET`      | `/restaurants/details/:id`         | Renders `restaurant-details` view for the particular restaurant. |                                                          |
+| `GET`      | `/restaurants/details/:id`         | Renders `restaurant-details` view for the particular restaurant. |  
+| `GET`      | `/beers`                     | Renders `beer-list` view.                              |                                                          |
+| `GET`      | `/beers/details/:id`         | Renders `beer-details` view for the particular restaurant. |                                                        |
 
 
 
@@ -67,18 +72,48 @@ User model
   name: String,
   email: String,
   password: String,
-  favorites: [FavoriteId],
+  restaurants: [RestaurantId],
+  beers: [BeersTriedId],
+  favBeers: [favBeersId],
+  favSpot: [favSpotsId]
 }
 
 ```
 
 
 
-Favorites model
+Restaurant model
 
 ```javascript
 {
-  placeId: String,
+  name: String,
+  adress: String,
+  beersId: [arrayIds],
+  rating: number
+}
+
+```
+
+Beer model
+
+```javascript
+{
+  name: String,
+  style: String,
+  brewery: String,
+  quantity: String,
+  ABV: number,
+  brand: String,
+  reataurantId: [arrayIds]
+}
+
+```
+
+Review model (bonus)
+
+```javascript
+{
+  ,
 }
 
 ```
@@ -89,11 +124,15 @@ Favorites model
 
 ## API's
 
+Google Maps/Zoomato/TripAdvisor
+OpenFoodFacts
+
 
 <br>
 
 
 ## Packages
+
 
 
 
@@ -103,7 +142,7 @@ Favorites model
 
 ## Backlog
 
-[See the Trello board.](https://trello.com/b/Ni3giVKf/ironhackproject)
+[See the Trello board.]()
 
 
 
@@ -133,9 +172,9 @@ The url to your repository and to your deployed project
 
 The url to your presentation slides
 
-[Slides Link](https://docs.google.com/presentation/d/1P5FIi0vHZBUcgUtmt1M4_lLCO5dwdJ4UOgtJa4ehGfk/edit?usp=sharing)
+[Slides Link]()
 
 ### Contributors
-FirstName LastName - [`<github-username>`](https://github.com/person1-username) - [`<linkedin-profile-link>`](https://www.linkedin.com/in/person1-username)
+Hugo Esteves - [`<HugoEsteves21>`](https://github.com/HugoEsteves21) - [`<linkedin-profile-link>`](https://www.linkedin.com/in/person1-username)
 
-FirstName LastName - [`<github-username>`](https://github.com/person2-username) - [`<linkedin-profile-link>`](https://www.linkedin.com/in/person2-username)
+Bruno Rocha - [`<brunorocha20`](https://github.com/brunorocha20) - [`<linkedin-profile-link>`](https://www.linkedin.com/in/person2-username)
