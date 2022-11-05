@@ -1,0 +1,64 @@
+{ 
+  "restaurant": [
+    { "name": "Quimera Brewpub",
+      "adress": "Rua Prior do Crato, 6",
+      "rating": 4.3
+    },
+    { "name": "Dois Corvos",
+      "adress": "Rua Capitão Leitão, 94",
+      "rating": 4.6
+    },
+    { "name": "O Purista",
+      "adress": "Rua Nova da Trindade, 16",
+      "rating": 4.3
+    },
+    { "name": "Oitava Colina",
+      "adress": "Rua Damasceno Monteiro, 8A",
+      "rating": 4.6
+    },
+    { "name": "Boteco Dona Luzia",
+      "adress": "Avenida 5 de Outubro, 36D",
+      "rating": 4.2
+    },
+    { "name": "The Couch Sports Bar",
+      "adress": "Rua do Alecrim, 21A",
+      "rating": 4.8
+    },
+    { "name": "Irish & Co.",
+      "adress": "Rua da Pimenta 57-61",
+      "rating": 4.3
+    },
+    { "name": "Lx Brewery",
+      "adress": "Rua do Funchal, 5",
+      "rating": 4.4
+    },
+    { "name": "Fábrica da Musa",
+      "adress": "Rua do Açúcar, 83",
+      "rating": 4.2
+    },
+    { "name": "Lince",
+      "adress": "Rua Capitão Leitão, 1B",
+      "rating": 4.6
+    },
+    { "name": "Delirium Café Lisboa",
+      "adress": "Calçada Nova de São Francisco, 2A",
+      "rating": 4.5
+    },
+    { "name": "Sacarrabos Beer Co.",
+      "adress": "Rua da Moeda, 12",
+      "rating": 4.3
+    },
+    { "name": "Tasca do Chico",
+      "adress": "Rua Diário de Notícias, 39",
+      "rating": 4.6
+    },
+    { "name": "DeBru",
+      "adress": "Rua Luciano Cordeiro, 2C",
+      "rating": 4.3
+    },
+    { "name": "Cerveteca",
+      "adress": "Praça das Flores, 63",
+      "rating": 4.8
+    }
+  ]
+}
