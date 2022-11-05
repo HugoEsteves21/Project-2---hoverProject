@@ -1,64 +1,198 @@
 { 
   "restaurant": [
     { "name": "Quimera Brewpub",
-      "adress": "Rua Prior do Crato, 6",
-      "rating": 4.3
+      "image": {},
+      "location": {
+        "adress": "Rua Prior do Crato, 6",
+        "latLong": {
+          "latitude": [],
+          "longitude": []
+        }
+      },
+      "rating": 4.3,
+      "beerId": []
     },
+
     { "name": "Dois Corvos",
-      "adress": "Rua Capitão Leitão, 94",
-      "rating": 4.6
+      "image": {},
+      "location": {
+        "adress": "Rua Capitão Leitão, 94",
+        "latLong": {
+          "latitude": [],
+          "longitude": []
+        }
+      },
+      "rating": 4.6,
+      "beerId": []
     },
+
     { "name": "O Purista",
-      "adress": "Rua Nova da Trindade, 16",
-      "rating": 4.3
+      "image": {},
+      "location": {
+        "adress": "Rua Nova da Trindade, 16",
+        "latLong": {
+          "latitude": [],
+          "longitude": []
+        }
+      },
+      "rating": 4.3,
+      "beerId": []
     },
+
     { "name": "Oitava Colina",
-      "adress": "Rua Damasceno Monteiro, 8A",
-      "rating": 4.6
+      "image": {},
+      "location": {
+        "adress": "Rua Damasceno Monteiro, 8A",
+        "latLong": {
+          "latitude": [],
+          "longitude": []
+        }
+      },
+      "rating": 4.6,
+      "beerId": []
     },
+
     { "name": "Boteco Dona Luzia",
-      "adress": "Avenida 5 de Outubro, 36D",
-      "rating": 4.2
+      "image": {},
+      "location": {
+        "adress": "Avenida 5 de Outubro, 36D",
+        "latLong": {
+          "latitude": [],
+          "longitude": []
+        }
+      },
+      "rating": 4.2,
+      "beerId": []
     },
+
     { "name": "The Couch Sports Bar",
-      "adress": "Rua do Alecrim, 21A",
-      "rating": 4.8
+      "image": {},
+      "location": {
+        "adress": "Rua do Alecrim, 21A",
+        "latLong": {
+          "latitude": [],
+          "longitude": []
+        }
+      },
+      "rating": 4.8,
+      "beerId": []
     },
+
     { "name": "Irish & Co.",
-      "adress": "Rua da Pimenta 57-61",
-      "rating": 4.3
+      "image": {},
+      "location": {
+        "adress": "Rua da Pimenta 57-61",
+        "latLong": {
+          "latitude": [],
+          "longitude": []
+        }
+      },
+      "rating": 4.3,
+      "beerId": []
     },
+
     { "name": "Lx Brewery",
-      "adress": "Rua do Funchal, 5",
-      "rating": 4.4
+      "image": {},
+      "location": {
+        "adress": "Rua do Funchal, 5",
+        "latLong": {
+          "latitude": [],
+          "longitude": []
+        }
+      },
+      "rating": 4.4,
+      "beerId": []
     },
+
     { "name": "Fábrica da Musa",
-      "adress": "Rua do Açúcar, 83",
-      "rating": 4.2
+      "image": {},
+      "location": {
+        "adress": "Rua do Açúcar, 83",
+        "latLong": {
+          "latitude": [],
+          "longitude": []
+        }
+      },
+      "rating": 4.2,
+      "beerId": []
     },
+
     { "name": "Lince",
-      "adress": "Rua Capitão Leitão, 1B",
-      "rating": 4.6
+      "image": {},
+      "location": {
+        "adress": "Rua Capitão Leitão, 1B",
+        "latLong": {
+          "latitude": [],
+          "longitude": []
+        }
+      },
+      "rating": 4.6,
+      "beerId": []
     },
+
     { "name": "Delirium Café Lisboa",
-      "adress": "Calçada Nova de São Francisco, 2A",
-      "rating": 4.5
+      "image": {},
+      "location": {
+        "adress": "Calçada Nova de São Francisco, 2A",
+        "latLong": {
+          "latitude": [],
+          "longitude": []
+        }
+      },
+      "rating": 4.5,
+      "beerId": []
     },
+
     { "name": "Sacarrabos Beer Co.",
-      "adress": "Rua da Moeda, 12",
-      "rating": 4.3
+      "image": {},
+      "location": {
+        "adress": "Rua da Moeda, 12",
+        "latLong": {
+          "latitude": [],
+          "longitude": []
+        }
+      },
+      "rating": 4.3,
+      "beerId": []
     },
+
     { "name": "Tasca do Chico",
-      "adress": "Rua Diário de Notícias, 39",
-      "rating": 4.6
+      "image": {},
+      "location": {
+        "adress": "Rua Diário de Notícias, 39",
+        "latLong": {
+          "latitude": [],
+          "longitude": []
+        }
+      },
+      "rating": 4.6,
+      "beerId": []
     },
+
     { "name": "DeBru",
-      "adress": "Rua Luciano Cordeiro, 2C",
-      "rating": 4.3
+      "image": {},
+      "location": {
+        "adress": "Rua Luciano Cordeiro, 2C",
+        "latLong": {
+          "latitude": [],
+          "longitude": []
+        }
+      },
+      "rating": 4.5,
+      "beerId": []
     },
+    
     { "name": "Cerveteca",
-      "adress": "Praça das Flores, 63",
-      "rating": 4.8
+      "image": {},    
+      "location": {
+        "adress": "Praça das Flores, 63",
+        "latLong": {
+          "latitude": [],
+          "longitude": []
+        }
+      },
+      "rating": 4.8,
+      "beerId": []
     }
   ]
 }

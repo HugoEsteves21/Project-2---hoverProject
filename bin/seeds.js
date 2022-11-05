@@ -14,7 +14,7 @@ async function seeds() {
       const x = await mongoose.connect(MONGO_URI);
       console.log(`Connected to: ${x.connections[0].name}`);
   
-      const createdRestaurants = await Book.create(restaurants);
+      const createdRestaurants = await Restaurant.create(restaurants);
   
       console.log(`Successfuly created ${createdRestaurants.length} restaurants`);
   
