@@ -72,12 +72,22 @@ router.get('/beer/create', async (req, res, next) => res.render('beer/beer-creat
 
 
 router.post('/beer/create', async (req, res, next) => {
-    const { name, imageUrl, style, brewery, description, quantity, abv, brand, restaurantId } = req.body;
+    
+    const { name, imageUrl, style, brewery, description, quantity, abv, brand } = req.body;
 
     try {
-        const createdBeer = await Beer.create({ name, imageUrl, style, brewery, description, quantity, abv, brand, restaurantId });
 
-        res.redirect(`/beer/details/${createdBeer._id}`)
+        const restaurants = await Restaurant.find();
+        
+        const createdBeer = await Beer.create({ name, imageUrl, style, brewery, description, quantity, abv, brand });
+
+        const idRest = document.getElementsByName('restaurants').value;
+
+        const beerUpdate = await Beer.findByIdAndUpdate(createdBeer._id, { $push: { restaurantId: idRest }});
+
+        const restaurantUpdate = await Restaurant.findByIdAndUpdate(idRest, { $push: { beerId: createdBeer._id }});
+
+        res.redirect(`/beer/details/${createdBeer._id}`);
         
     } catch (error) {
         console.log(error);
