@@ -68,24 +68,23 @@ router.get('/beers/details/:id', async (req, res, next) => {
 });
 
 
-/* router.post('/beers/details/:id', async (req, res, next) => {
+router.post('/beers/details/:id', async (req, res, next) => {
 
     const { id } = req.params;
+    const { currentUser } = req.session.currentUser;
 
     try {
-        const beers = await Beer.find();
+        //const beer = await Beer.findById(id);
 
-        res.render('beer/beer-list', { beers });
+        const favouriteBeer = await User.findByIdAndUpdate(currentUser, { $push: { favBeers: id }});
 
-        const beer = await Beer.findById(id);
-
-        res.render('beer/beer-details', beer)
+        res.redirect(`/beers/details/${_id}`);
         
     } catch (error) {
         console.log(error);
         next(error);
     }
-}); */
+});
 
 
 router.get('/beers/create', async (req, res, next) => res.render('beer/beer-create'));
@@ -123,11 +122,18 @@ router.post('/beers/create', async (req, res, next) => {
 
 router.get('/private/profile', async (req, res, next) => {
     
+    try {
+        const { currentUser } = req.session.currentUser;
 
-    
-    
-    res.render()
+        const user = await User.findById(currentUser)
+        .populate('favSpot').populate('favBeer');
 
+        res.render('profile/profile');
+
+    } catch (error) {
+        console.log(error);
+        next(error);
+    }
 });
 
 
