@@ -34,7 +34,7 @@ const beerSchema = new Schema(
         required: true,
         trim: true,
     },
-    reataurantId: [
+    restaurantId: [
         {
             type: Schema.Types.ObjectId,
             ref: 'Restaurant'
