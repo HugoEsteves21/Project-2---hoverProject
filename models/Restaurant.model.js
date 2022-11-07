@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model } = require("mongoose");
 
 const restaurantSchema = new Schema(
   {
@@ -9,13 +9,24 @@ const restaurantSchema = new Schema(
     image: String,
     adress: String,
     rating: Number,
-    reviews: [{ type: Schema.Types.ObjectId, ref: 'Review' }],
+    beerId: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Beer",
+      },
+    ],
+    reviews: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Review",
+      },
+    ],
   },
   {
     timestamps: true,
   }
 );
 
-const Restaurant = model('Restaurant', restaurantSchema);
+const Restaurant = model("Restaurant", restaurantSchema);
 
 module.exports = Restaurant;
