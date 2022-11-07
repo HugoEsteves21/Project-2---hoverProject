@@ -68,6 +68,24 @@ router.get('/beers/details/:id', async (req, res, next) => {
 });
 
 
+router.get('/beer/create', async (req, res, next) => res.render('beer/beer-create'));
+
+
+router.post('/beer/create', async (req, res, next) => {
+    const { name, imageUrl, style, brewery, description, quantity, abv, brand, restaurantId } = req.body;
+
+    try {
+        const createdBeer = await Beer.create({ name, imageUrl, style, brewery, description, quantity, abv, brand, restaurantId });
+
+        res.redirect(`/beer/details/${createdBeer._id}`)
+        
+    } catch (error) {
+        console.log(error);
+        next(error);
+    }
+})
+
+
 
 
 router.get('/private/profile', (req, res, next) => res.render())
