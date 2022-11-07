@@ -68,6 +68,34 @@ router.get('/beers/details/:id', async (req, res, next) => {
 });
 
 
+router.get('/beer/create', async (req, res, next) => res.render('beer/beer-create'));
+
+
+router.post('/beer/create', async (req, res, next) => {
+    
+    const { name, imageUrl, style, brewery, description, quantity, abv, brand } = req.body;
+
+    try {
+
+        const restaurants = await Restaurant.find();
+        
+        const createdBeer = await Beer.create({ name, imageUrl, style, brewery, description, quantity, abv, brand });
+
+        const idRest = document.getElementsByName('restaurants').value;
+
+        const beerUpdate = await Beer.findByIdAndUpdate(createdBeer._id, { $push: { restaurantId: idRest }});
+
+        const restaurantUpdate = await Restaurant.findByIdAndUpdate(idRest, { $push: { beerId: createdBeer._id }});
+
+        res.redirect(`/beer/details/${createdBeer._id}`);
+        
+    } catch (error) {
+        console.log(error);
+        next(error);
+    }
+})
+
+
 
 
 router.get('/private/profile', (req, res, next) => res.render())

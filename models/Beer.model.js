@@ -8,7 +8,11 @@ const beerSchema = new Schema(
       unique: true,
       trim: true,
     },
-    imageUrl: String,
+    imageUrl: {
+      type: String,
+      required: true,
+      trim: true,
+    },
     style: {
       type: String,
       required: true,
