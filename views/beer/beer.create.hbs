@@ -1,0 +1,26 @@
+<form action="/beer/create" method="POST">
+  <label for="">Name:</label>
+  <input type="text" name="name" id="" value="{{beer.name}}" />
+
+  {{! adding the picture of the beer }}
+  <label for="image">
+    Image:
+    <input type="file" name="imageUrl" value="{{beer.imageUrl}}" />
+  </label>
+
+
+  <label for="">Style:</label>
+  <input type="text" name="style" id="" value="{{beer.style}}" />
+  <label for="">Brand:</label>
+  <input type="text" name="brand" id="" value="{{beer.brand}}" />
+
+  {{! array of restaurants in the database }}
+  <label for="">Bar:</label>
+  <select name="restaurants" multiple>
+    {{#each restaurants}}
+      <option value="{{this._id}}">{{this.name}}</option>
+    {{/each}}
+  </select>
+
+  <button type="submit">Add your special beer</button>
+</form>
