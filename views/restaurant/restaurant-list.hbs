@@ -1,0 +1,13 @@
+<h1>Where does your thirst takes you?</h1>
+
+{{#each restaurants}}
+  <div>
+    <img src="{{image}}" alt="image of {{name}} bar">
+    <h3>{{name}}</h3>
+    <p>Rating: {{rating}}</p>
+    <p>Address: {{location.adress}}</p>
+    <a href='/restaurants/details/{{_id}}'>Checkout More!</a>
+
+  </div>
+
+{{/each}}

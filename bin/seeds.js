@@ -5,7 +5,7 @@ const MONGO_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/hoverPro
 
 const restaurants = [
     { "name": "Quimera Brewpub",
-      "image": {},
+      "image": "",
       "location": {
         "adress": "Rua Prior do Crato, 6",
         "latLong": {
@@ -18,7 +18,7 @@ const restaurants = [
     },
 
     { "name": "Dois Corvos",
-      "image": {},
+      "image": "",
       "location": {
         "adress": "Rua Capitão Leitão, 94",
         "latLong": {
@@ -31,7 +31,7 @@ const restaurants = [
     },
 
     { "name": "O Purista",
-      "image": {},
+      "image": "",
       "location": {
         "adress": "Rua Nova da Trindade, 16",
         "latLong": {
@@ -44,7 +44,7 @@ const restaurants = [
     },
 
     { "name": "Oitava Colina",
-      "image": {},
+      "image": "",
       "location": {
         "adress": "Rua Damasceno Monteiro, 8A",
         "latLong": {
@@ -57,7 +57,7 @@ const restaurants = [
     },
 
     { "name": "Boteco Dona Luzia",
-      "image": {},
+      "image": "",
       "location": {
         "adress": "Avenida 5 de Outubro, 36D",
         "latLong": {
@@ -70,7 +70,7 @@ const restaurants = [
     },
 
     { "name": "The Couch Sports Bar",
-      "image": {},
+      "image": "",
       "location": {
         "adress": "Rua do Alecrim, 21A",
         "latLong": {
@@ -83,7 +83,7 @@ const restaurants = [
     },
 
     { "name": "Irish & Co.",
-      "image": {},
+      "image": "",
       "location": {
         "adress": "Rua da Pimenta 57-61",
         "latLong": {
@@ -96,7 +96,7 @@ const restaurants = [
     },
 
     { "name": "Lx Brewery",
-      "image": {},
+      "image": "",
       "location": {
         "adress": "Rua do Funchal, 5",
         "latLong": {
@@ -109,7 +109,7 @@ const restaurants = [
     },
 
     { "name": "Fábrica da Musa",
-      "image": {},
+      "image": "",
       "location": {
         "adress": "Rua do Açúcar, 83",
         "latLong": {
@@ -122,7 +122,7 @@ const restaurants = [
     },
 
     { "name": "Lince",
-      "image": {},
+      "image": "",
       "location": {
         "adress": "Rua Capitão Leitão, 1B",
         "latLong": {
@@ -135,7 +135,7 @@ const restaurants = [
     },
 
     { "name": "Delirium Café Lisboa",
-      "image": {},
+      "image": "",
       "location": {
         "adress": "Calçada Nova de São Francisco, 2A",
         "latLong": {
@@ -148,7 +148,7 @@ const restaurants = [
     },
 
     { "name": "Sacarrabos Beer Co.",
-      "image": {},
+      "image": "",
       "location": {
         "adress": "Rua da Moeda, 12",
         "latLong": {
@@ -161,7 +161,7 @@ const restaurants = [
     },
 
     { "name": "Tasca do Chico",
-      "image": {},
+      "image": "",
       "location": {
         "adress": "Rua Diário de Notícias, 39",
         "latLong": {
@@ -174,7 +174,7 @@ const restaurants = [
     },
 
     { "name": "DeBru",
-      "image": {},
+      "image": "",
       "location": {
         "adress": "Rua Luciano Cordeiro, 2C",
         "latLong": {
@@ -187,7 +187,7 @@ const restaurants = [
     },
     
     { "name": "Cerveteca",
-      "image": {},    
+      "image": "",    
       "location": {
         "adress": "Praça das Flores, 63",
         "latLong": {

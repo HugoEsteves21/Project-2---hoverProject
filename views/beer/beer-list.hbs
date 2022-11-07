@@ -1,0 +1,13 @@
+<h1>What do you want to drink?</h1>
+
+{{#each beers}}
+  <div>
+    <img src="{{imageUrl}}" alt="image of {{name}} beer">
+    <h3>{{name}}</h3>
+    <p>Style: {{style}}</p>
+    <p>By: {{brand}}</p>
+    <a href='/beers/details/{{_id}}'>Checkout More!</a>
+
+  </div>
+
+{{/each}}
