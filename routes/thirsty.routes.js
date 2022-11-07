@@ -43,7 +43,7 @@ router.get('/beers', async (req, res, next) => {
     try {
         const beers = await Beer.find();
 
-        res.render('beer/beer-list', { beers })
+        res.render('beer/beer-list', { beers });
 
     } catch (error) {
         console.log(error);
@@ -68,11 +68,15 @@ router.get('/beers/details/:id', async (req, res, next) => {
 });
 
 
-router.post('/beers/details/:id', async (req, res, next) => {
+/* router.post('/beers/details/:id', async (req, res, next) => {
 
     const { id } = req.params;
 
     try {
+        const beers = await Beer.find();
+
+        res.render('beer/beer-list', { beers });
+
         const beer = await Beer.findById(id);
 
         res.render('beer/beer-details', beer)
@@ -81,7 +85,7 @@ router.post('/beers/details/:id', async (req, res, next) => {
         console.log(error);
         next(error);
     }
-});
+}); */
 
 
 router.get('/beers/create', async (req, res, next) => res.render('beer/beer-create'));
@@ -92,6 +96,7 @@ router.post('/beers/create', async (req, res, next) => {
     const { name, imageUrl, style, brewery, description, quantity, abv, brand } = req.body;
 
     try {
+        const { currentUser } = req.session.currentUser;
 
         const restaurants = await Restaurant.find();
         
@@ -103,17 +108,27 @@ router.post('/beers/create', async (req, res, next) => {
 
         const restaurantUpdate = await Restaurant.findByIdAndUpdate(idRest, { $push: { beerId: createdBeer._id }});
 
+        //const restaurantUpdateUser = await User.findByIdAndUpdate(currentUser, { $push: { restaurantId: idRest }});
+
+        //const beerUpdateUser = await User.findByIdAndUpdate(currentUser, { $push: { beerId: createdBeer._id }});
+
         res.redirect(`/beers/details/${createdBeer._id}`);
         
     } catch (error) {
         console.log(error);
         next(error);
     }
-})
+});
 
 
+router.get('/private/profile', async (req, res, next) => {
+    
 
+    
+    
+    res.render()
 
-router.get('/private/profile', (req, res, next) => res.render())
+});
+
 
 module.exports = router;
