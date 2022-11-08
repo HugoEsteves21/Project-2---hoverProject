@@ -16,11 +16,11 @@
 
   {{! array of restaurants in the database }}
   <label for="">Bar:</label>
-  <select name="restaurants">
+    <select name="restaurants">
     {{#each restaurants}}
-      <option value="{{this._id}}">{{this.name}}</option>
+      <option value="{{_id}}">{{name}}</option>
     {{/each}}
-  </select>
+    </select>
 
   <button type="submit">Add your special beer</button>
 </form>

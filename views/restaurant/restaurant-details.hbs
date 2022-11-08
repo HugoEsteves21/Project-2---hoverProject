@@ -1,0 +1,23 @@
+<h1>Discover more about this Restaurant</h1>
+
+  <div>
+    <img src="{{image}}" alt="image of {{name}} restaurant" />
+    <h3>{{name}}</h3>
+    <p>Where: {{location.adress}}</p>
+    <p>Rating: {{rating}}</p>
+    
+    
+    <p>Reviews: {{reviews}}</p>
+    
+
+
+    <form action="/restaurants/details/{{_id}}" method="post">
+      
+      <input type="checkbox" />
+      <i class="icon-heart">
+        <i class="icon-plus-sign"></i>
+      </i>
+
+    </form>
+    
+  </div>

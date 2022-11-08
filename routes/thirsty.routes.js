@@ -38,6 +38,25 @@ router.get('/restaurants/details/:id', async (req, res, next) => {
 });
 
 
+router.post('/restaurants/details/:id', async (req, res, next) => {
+
+    const { id } = req.params;
+    const { currentUser } = req.session.currentUser;
+
+    try {
+        //const restaurant = await Restaurant.findById(id);
+
+        const favouriteRestaurant = await User.findByIdAndUpdate(currentUser, { $push: { favSpot: id }});
+
+        res.redirect(`/restaurants/details/${_id}`);
+        
+    } catch (error) {
+        console.log(error);
+        next(error);
+    }
+});
+
+
 router.get('/beers', async (req, res, next) => {
 
     try {
@@ -87,7 +106,17 @@ router.post('/beers/details/:id', async (req, res, next) => {
 });
 
 
-router.get('/beers/create', async (req, res, next) => res.render('beer/beer-create'));
+router.get('/beers/create', async (req, res, next) => {
+    try {
+        const restaurants = await Restaurant.find();
+        console.log(restaurants.name)
+        res.render('beer/beer-create', {restaurants})
+    } catch (error) {
+        console.log(error);
+        next(error);
+    }
+
+});
 
 
 router.post('/beers/create', async (req, res, next) => {
@@ -97,8 +126,6 @@ router.post('/beers/create', async (req, res, next) => {
     try {
         const { currentUser } = req.session.currentUser;
 
-        const restaurants = await Restaurant.find();
-        
         const createdBeer = await Beer.create({ name, imageUrl, style, brewery, description, quantity, abv, brand });
 
         const idRest = document.getElementsByName('restaurants').value;
@@ -107,9 +134,9 @@ router.post('/beers/create', async (req, res, next) => {
 
         const restaurantUpdate = await Restaurant.findByIdAndUpdate(idRest, { $push: { beerId: createdBeer._id }});
 
-        //const restaurantUpdateUser = await User.findByIdAndUpdate(currentUser, { $push: { restaurantId: idRest }});
+        const restaurantUpdateUser = await User.findByIdAndUpdate(currentUser, { $push: { restaurantId: idRest }});
 
-        //const beerUpdateUser = await User.findByIdAndUpdate(currentUser, { $push: { beerId: createdBeer._id }});
+        const beerUpdateUser = await User.findByIdAndUpdate(currentUser, { $push: { beerId: createdBeer._id }});
 
         res.redirect(`/beers/details/${createdBeer._id}`);
         
@@ -125,10 +152,28 @@ router.get('/private/profile', async (req, res, next) => {
     try {
         const { currentUser } = req.session.currentUser;
 
-        const user = await User.findById(currentUser)
-        .populate('favSpot').populate('favBeer');
 
-        res.render('profile/profile');
+
+        const user = await User.findById(currentUser)
+        .populate({
+            path: 'favSpot',
+            populate: {
+                path: 'name',
+                model: 'Restaurant',
+            }   
+        }).populate({
+            path: 'favBeer',
+            populate: {
+                path: 'name',
+                model: 'Beer',
+            }  
+        });
+        /* .populate('favSpot').populate: {
+            path: 'name', model: 'Restaurant'
+        }
+        .populate('favBeer'); */
+        
+        res.render('profile/profile', { user });
 
     } catch (error) {
         console.log(error);
