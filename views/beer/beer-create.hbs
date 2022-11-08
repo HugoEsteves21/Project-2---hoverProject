@@ -33,10 +33,10 @@
     ></textarea>
 
     {{! array of restaurants in the database }}
-    <label for="">Bar:</label>
-    <select name="restaurants">
+    {{!-- <label for="">Bar:</label> --}}
+    <select name="restaurantId">
       {{#each restaurants}}
-        <option value="{{_id}}">{{name}}</option>
+        <option  class='restaurants' value="{{_id}}">{{name}}</option>
       {{/each}}
     </select>
 

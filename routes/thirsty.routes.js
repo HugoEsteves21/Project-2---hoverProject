@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const mongoose = require("mongoose");
+const fileUploader = require('../config/cloudinary.config');
 
 const Beer = require('../models/Beer.model');
 const User = require('../models/User.model');
@@ -117,17 +118,44 @@ router.get('/beers/create', async (req, res, next) => {
 });
 
 
-router.post('/beers/create', async (req, res, next) => {
+router.post('/beers/create', fileUploader.single('imageUrl'), async (req, res, next) => {
     
-    const { name, imageUrl, style, brewery, description, quantity, abv, brand } = req.body;
+    const { name, style, brewery, description, quantity, abv, brand, restaurantId } = req.body;
 
     try {
         const currentUser = req.session.currentUser._id;
+        if(req.file){
+            const createdBeer = await Beer.create({ name, style, imageUrl: req.file.path, brewery, description, quantity, abv, brand });
+            const newBeerId = createdBeer._id
+            
+            /* console.log(newBeerId)
+            console.log(restaurantId)
+            console.log(currentUser) */
+          
+            const beerUpdate = await Beer.findByIdAndUpdate(newBeerId, { $push: { restaurantId: restaurantId }});
+            const restaurantUpdate = await Restaurant.findByIdAndUpdate(restaurantId, { $push: { beerId: newBeerId }});
+            const restaurantUpdateUser = await User.findByIdAndUpdate(currentUser, { $push: { restaurantId: restaurantId }});
+            const beerUpdateUser = await User.findByIdAndUpdate(currentUser, { $push: { beerId: newBeerId }});
+          
+            res.redirect(`/beers/details/${newBeerId}`);
+            
+        } else {
+            const createdBeer = await Beer.create({ name, style, brewery, description, quantity, abv, brand});
+            const newBeerId = createdBeer._id
+            
+  /*           console.log(newBeerId)
+            console.log(restaurantId)
+            console.log(currentUser) */
 
-        const createdBeer = await Beer.create({ name, imageUrl, style, brewery, description, quantity, abv, brand });
+            const beerUpdate = await Beer.findByIdAndUpdate(newBeerId, { $push: { restaurantId: restaurantId }});
+            const restaurantUpdate = await Restaurant.findByIdAndUpdate(restaurantId, { $push: { beerId: newBeerId }});
+            const restaurantUpdateUser = await User.findByIdAndUpdate(currentUser, { $push: { restaurantId: restaurantId }});
+            const beerUpdateUser = await User.findByIdAndUpdate(currentUser, { $push: { beerId: newBeerId }});
 
-        const idRest = document.getElementsByName('restaurants').value;
-
+            res.redirect(`/beers/details/${newBeerId}`);
+        }
+       
+/* 
         const beerUpdate = await Beer.findByIdAndUpdate(createdBeer._id, { $push: { restaurantId: idRest }});
 
         const restaurantUpdate = await Restaurant.findByIdAndUpdate(idRest, { $push: { beerId: createdBeer._id }});
@@ -136,7 +164,9 @@ router.post('/beers/create', async (req, res, next) => {
 
         const beerUpdateUser = await User.findByIdAndUpdate(currentUser, { $push: { beerId: createdBeer._id }});
 
-        res.redirect(`/beers/details/${createdBeer._id}`);
+        res.redirect(`/beer/details/${createdBeer._id}`);
+        */
+        res.redirect(`/`);
         
     } catch (error) {
         console.log(error);

@@ -1,4 +1,4 @@
-<h1>Discover more about this Beer</h1>
+{{!-- <h1>Discover more about this Beer</h1>
 <div class="container">
   <div class="card-deck row">
     <div class="col-xs-12 col-sm-6 col-md-4">
@@ -21,7 +21,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> --}}
 
 {{!-- <div>
     <img src="{{imageUrl}}" alt="image of {{name}} beer" />
@@ -44,3 +44,32 @@
     </form>
     
   </div> --}}
+
+
+
+  <h1>Discover more about this Beer</h1>
+<div class="container">
+  <div class="cards">
+    <div class="card-item">
+      <div class="card-image">
+       
+          <img src="{{imageUrl}}" alt="image of {{name}} beer" />
+          </div>
+          <div class="card-info">
+          
+            <h3 class="card-title">{{name}}</h3>
+            <p>Style: {{style}}</p>
+            <p>Brewery: {{brewery}}</p>
+            <p>Descripton: {{description}}</p>
+            <p>Quantity: {{quantity}}</p>
+            <p>ABV: {{abv}}</p>
+            <p>By: {{brand}}</p>
+            <form action="/beers/details/{{_id}}" method="post">
+              <button type="submit">Add to favs</button></form>
+          </div>
+      
+      
+    
+  </div>
+</div>
+</div>

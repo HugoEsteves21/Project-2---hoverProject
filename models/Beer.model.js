@@ -6,40 +6,35 @@ const beerSchema = new Schema(
       type: String,
       required: true,
       unique: true,
-      trim: true,
     },
     imageUrl: {
       type: String,
-      required: true,
-      trim: true,
+      default: 'https://static-verticommnetwork1.netdna-ssl.com/img/products/default-2061-full.png'
+
     },
     style: {
       type: String,
-      required: true,
-      trim: true,
+
     },
     brewery: {
       type: String,
-      trim: true,
+
     },
     description: {
       type: String,
-      trim: true,
+ 
     },
     quantity: {
       type: String,
-      required: true,
-      trim: true,
+
     },
     abv: {
       type: Number,
-      required: true,
-      trim: true,
+
     },
     brand: {
       type: String,
-      required: true,
-      trim: true,
+
     },
     restaurantId: [
       {
