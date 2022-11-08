@@ -41,14 +41,12 @@ router.get('/restaurants/details/:id', async (req, res, next) => {
 router.post('/restaurants/details/:id', async (req, res, next) => {
 
     const { id } = req.params;
-    const { currentUser } = req.session.currentUser;
+    const currentUser = req.session.currentUser._id;
 
     try {
-        //const restaurant = await Restaurant.findById(id);
-
         const favouriteRestaurant = await User.findByIdAndUpdate(currentUser, { $push: { favSpot: id }});
 
-        res.redirect(`/restaurants/details/${_id}`);
+        res.redirect(`/restaurants/details/${id}`);
         
     } catch (error) {
         console.log(error);
@@ -93,8 +91,6 @@ router.post('/beers/details/:id', async (req, res, next) => {
     const currentUser  = req.session.currentUser._id;
 
     try {
-        //const beer = await Beer.findById(id);
-  
         const favouriteBeer = await User.findByIdAndUpdate(currentUser, { $push: { favBeers: id }});
 
         res.redirect(`/beers/details/${id}`);
@@ -107,10 +103,12 @@ router.post('/beers/details/:id', async (req, res, next) => {
 
 
 router.get('/beers/create', async (req, res, next) => {
+    
     try {
         const restaurants = await Restaurant.find();
-        console.log(restaurants.name)
-        res.render('beer/beer-create', {restaurants})
+        
+        res.render('beer/beer-create', {restaurants});
+
     } catch (error) {
         console.log(error);
         next(error);
@@ -124,7 +122,7 @@ router.post('/beers/create', async (req, res, next) => {
     const { name, imageUrl, style, brewery, description, quantity, abv, brand } = req.body;
 
     try {
-        const { currentUser } = req.session.currentUser;
+        const currentUser = req.session.currentUser._id;
 
         const createdBeer = await Beer.create({ name, imageUrl, style, brewery, description, quantity, abv, brand });
 
@@ -155,11 +153,8 @@ router.get('/private/profile', async (req, res, next) => {
         const user = await User.findById(currentUser)
         .populate('favBeers')
         .populate('favSpot')
-
         
-console.log(user)
-
-       res.render('profile/profile', { user }); 
+        res.render('profile/profile', { user }); 
 
     } catch (error) {
         console.log(error);
