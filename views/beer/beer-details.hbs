@@ -1,6 +1,28 @@
 <h1>Discover more about this Beer</h1>
+<div class="container">
+  <div class="card-deck row">
+    <div class="col-xs-12 col-sm-6 col-md-4">
+      <div class="card">
+        <div class="view-overlay">
+          <img src="{{imageUrl}}" alt="image of {{name}} beer" />
+        <div class="mask rgba-white-slight"></div>
+    <div class="card-body">
+    <h3>{{name}}</h3>
+    <p>Style: {{style}}</p>
+    <p>Brewery: {{brewery}}</p>
+    <p>Descripton: {{description}}</p>
+    <p>Quantity: {{quantity}}</p>
+    <p>ABV: {{abv}}</p>
+    <p>By: {{brand}}</p>
+    </div>
+    </div>
+    </div>
+  </div>
+  </div>
+</div>
 
-  <div>
+
+  {{!-- <div>
     <img src="{{imageUrl}}" alt="image of {{name}} beer" />
     <h3>{{name}}</h3>
     <p>Style: {{style}}</p>
@@ -12,12 +34,9 @@
 
 
     <form action="/beers/details/{{_id}}" method="post">
-      
       <input type="checkbox" />
       <i class="icon-heart">
         <i class="icon-plus-sign"></i>
       </i>
-
     </form>
-    
-  </div>
+    </div> --}}
