@@ -124,6 +124,11 @@ body {
   align-items: center;
 }
 
-.create {
+.padding {
   padding: 10%;
+}
+
+.create-button {
+  display: flex;
+  float: right;
 }
