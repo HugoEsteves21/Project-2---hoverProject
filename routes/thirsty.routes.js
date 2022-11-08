@@ -90,14 +90,14 @@ router.get('/beers/details/:id', async (req, res, next) => {
 router.post('/beers/details/:id', async (req, res, next) => {
 
     const { id } = req.params;
-    const { currentUser } = req.session.currentUser;
+    const currentUser  = req.session.currentUser._id;
 
     try {
         //const beer = await Beer.findById(id);
-
+  
         const favouriteBeer = await User.findByIdAndUpdate(currentUser, { $push: { favBeers: id }});
 
-        res.redirect(`/beers/details/${_id}`);
+        res.redirect(`/beers/details/${id}`);
         
     } catch (error) {
         console.log(error);
@@ -150,30 +150,16 @@ router.post('/beers/create', async (req, res, next) => {
 router.get('/private/profile', async (req, res, next) => {
     
     try {
-        const { currentUser } = req.session.currentUser;
-
-
+        const currentUser = req.session.currentUser._id;
 
         const user = await User.findById(currentUser)
-        .populate({
-            path: 'favSpot',
-            populate: {
-                path: 'name',
-                model: 'Restaurant',
-            }   
-        }).populate({
-            path: 'favBeer',
-            populate: {
-                path: 'name',
-                model: 'Beer',
-            }  
-        });
-        /* .populate('favSpot').populate: {
-            path: 'name', model: 'Restaurant'
-        }
-        .populate('favBeer'); */
+        .populate('favBeers')
+        .populate('favSpot')
+
         
-        res.render('profile/profile', { user });
+console.log(user)
+
+       res.render('profile/profile', { user }); 
 
     } catch (error) {
         console.log(error);

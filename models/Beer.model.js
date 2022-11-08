@@ -20,7 +20,6 @@ const beerSchema = new Schema(
     },
     brewery: {
       type: String,
-      required: true,
       trim: true,
     },
     description: {

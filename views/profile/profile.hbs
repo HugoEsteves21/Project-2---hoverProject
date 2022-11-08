@@ -1,14 +1,14 @@
 <h1>Your profile</h1>
 
   <div>
-        <h3>{{username}}</h3>
-        <p>Email: {{email}}</p>
+        <h3>{{user.username}}</h3>
+        <p>Email: {{user.email}}</p>
 
     <div>
     <ul>
-        {{#each favSpot}}
+        {{#each user.favSpot}}
 
-        <li>{{this}}</li>
+        <li>{{name}}</li>
         <a href='/beers/details/{{_id}}'>Checkout More!</a>
 
         {{/each}}
@@ -17,9 +17,9 @@
 
     <div>
     <ul>
-        {{#each favBeers}}
+        {{#each user.favBeers}}
 
-        <li>{{this}}</li>
+        <li>{{name}}</li>
         <a href='/beers/details/{{_id}}'>Checkout More!</a>
 
         {{/each}}
