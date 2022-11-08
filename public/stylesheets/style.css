@@ -123,3 +123,7 @@ body {
   height: 30vh;
   align-items: center;
 }
+
+.create {
+  padding: 10%;
+}

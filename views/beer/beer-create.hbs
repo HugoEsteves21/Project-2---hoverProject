@@ -1,36 +1,45 @@
-<form action="/beers/create" method="POST">
-  <label for="">Name:</label>
-  <input type="text" name="name" id="" value="{{beer.name}}" />
+<div class="create">
+  <form action="/beers/create" method="POST">
+    <label for="">Name:</label>
+    <input type="text" name="name" id="" value="{{beer.name}}" />
 
-  {{! adding the picture of the beer }}
-  <label for="imageUrl">
-    Image:
-    <input type="file" name="imageUrl" value="{{beer.imageUrl}}" />
-  </label>
+    {{! adding the picture of the beer }}
+    <label for="imageUrl">
+      Image:
+      <input type="file" name="imageUrl" value="{{beer.imageUrl}}" />
+    </label>
 
+    <label for="style">Style:</label>
+    <input type="text" name="style" id="style" value="{{beer.style}}" />
+    <label for="brewery">Brewery:</label>
+    <input type="text" name="brewery" id="brewery" value="{{beer.brewery}}" />
+    <label for="brand">Brand:</label>
+    <input type="text" name="brand" id="brand" value="{{beer.brand}}" />
+    <label for="quantity">Quantity:</label>
+    <input
+      type="text"
+      name="quantity"
+      id="quantity"
+      value="{{beer.quantity}}"
+    />
+    <label for="abv">ABV:</label>
+    <input type="text" name="abv" id="abv" value="{{beer.abv}}" />
+    <label for="description">Description:</label>
+    <textarea
+      name="description"
+      id="description"
+      cols="30"
+      rows="10"
+    ></textarea>
 
-  <label for="style">Style:</label>
-  <input type="text" name="style" id="style" value="{{beer.style}}" />
-  <label for="brewery">Brewery:</label>
-  <input type="text" name="brewery" id="brewery" value="{{beer.brewery}}" />
-  <label for="brand">Brand:</label>
-  <input type="text" name="brand" id="brand" value="{{beer.brand}}" />
-  <label for="quantity">Quantity:</label>
-  <input type="text" name="quantity" id="quantity" value="{{beer.quantity}}" />
-  <label for="abv">ABV:</label>
-  <input type="text" name="abv" id="abv" value="{{beer.abv}}" />
-  <label for="description">Description:</label>
-  <textarea name="description" id="description" cols="30" rows="10"></textarea>
-  
-  
-
-  {{! array of restaurants in the database }}
-  <label for="">Bar:</label>
+    {{! array of restaurants in the database }}
+    <label for="">Bar:</label>
     <select name="restaurants">
-    {{#each restaurants}}
-      <option value="{{_id}}">{{name}}</option>
-    {{/each}}
+      {{#each restaurants}}
+        <option value="{{_id}}">{{name}}</option>
+      {{/each}}
     </select>
 
-  <button type="submit">Add your special beer</button>
-</form>
+    <button type="submit">Add your special beer</button>
+  </form>
+</div>

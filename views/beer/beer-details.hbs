@@ -5,24 +5,25 @@
       <div class="card">
         <div class="view-overlay">
           <img src="{{imageUrl}}" alt="image of {{name}} beer" />
-        <div class="mask rgba-white-slight"></div>
-    <div class="card-body">
-    <h3>{{name}}</h3>
-    <p>Style: {{style}}</p>
-    <p>Brewery: {{brewery}}</p>
-    <p>Descripton: {{description}}</p>
-    <p>Quantity: {{quantity}}</p>
-    <p>ABV: {{abv}}</p>
-    <p>By: {{brand}}</p>
+          <div class="mask rgba-white-slight"></div>
+          <div class="card-body">
+            <h3>{{name}}</h3>
+            <p>Style: {{style}}</p>
+            <p>Brewery: {{brewery}}</p>
+            <p>Descripton: {{description}}</p>
+            <p>Quantity: {{quantity}}</p>
+            <p>ABV: {{abv}}</p>
+            <p>By: {{brand}}</p>
+            <form action="/beers/details/{{_id}}" method="post">
+              <button type="submit">Add to favs</button></form>
+          </div>
+        </div>
+      </div>
     </div>
-    </div>
-    </div>
-  </div>
   </div>
 </div>
 
-
-  {{!-- <div>
+{{!-- <div>
     <img src="{{imageUrl}}" alt="image of {{name}} beer" />
     <h3>{{name}}</h3>
     <p>Style: {{style}}</p>
@@ -42,4 +43,4 @@
 
     </form>
     
-  </div>
+  </div> --}}
