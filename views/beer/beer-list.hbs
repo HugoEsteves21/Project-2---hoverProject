@@ -61,19 +61,21 @@
   {{/each}} --}}
 
 <div class="container">
-  {{#each beers}}
-    <div class="cards">
-      <div class="card-item">
-        <div class="card-image">
-          <img src="{{imageUrl}}" alt="image of {{name}} beer" />
-        </div>
-        <div class="card-info">
-          <h2 class="card-title">{{name}}</h2>
-          <p class="card-intro"><p>Style: {{style}}</p>
-            <p class="card-intro">By: {{brand}}</p>
-            <a class="card-intro" href="/beers/details/{{_id}}">Checkout More!</a></p>
+  <div class="row">
+    {{#each beers}}
+      <div class="cards col-sm">
+        <div class="card-item">
+          <div class="card-image">
+            <img src="{{imageUrl}}" alt="image of {{name}} beer" />
+          </div>
+          <div class="card-info">
+            <h2 class="card-title">{{name}}</h2>
+            <p class="card-intro"><p>Style: {{style}}</p>
+              <p class="card-intro">By: {{brand}}</p>
+              <a class="card-intro" href="/beers/details/{{_id}}">Checkout More!</a></p>
+          </div>
         </div>
       </div>
-    </div>
-  {{/each}}
+    {{/each}}
+  </div>
 </div>
