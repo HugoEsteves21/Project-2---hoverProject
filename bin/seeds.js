@@ -5,7 +5,7 @@ const MONGO_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/hoverPro
 
 const restaurants = [
     { "name": "Quimera Brewpub",
-      "image": "",
+      "image": "https://lifecooler.com/files/artigos/21954/a4a07b4e8a5db34e9081d786b232b9c5.jpg",
       "location": {
         "adress": "Rua Prior do Crato, 6",
         "latLong": {
