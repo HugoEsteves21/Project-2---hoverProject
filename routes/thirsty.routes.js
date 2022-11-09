@@ -124,8 +124,17 @@ router.post('/beers/create', fileUploader.single('imageUrl'), async (req, res, n
 
     try {
         const currentUser = req.session.currentUser._id;
+        
+        let imageUrl;
+
+        
         if(req.file){
-            const createdBeer = await Beer.create({ name, style, imageUrl: req.file.path, brewery, description, quantity, abv, brand });
+
+            imageUrl = req.file.path
+        } else {
+            imageUrl = 'https://static-verticommnetwork1.netdna-ssl.com/img/products/default-2061-full.png';
+        }
+            const createdBeer = await Beer.create({ name, style, imageUrl, brewery, description, quantity, abv, brand });
             const newBeerId = createdBeer._id
             
             /* console.log(newBeerId)
@@ -139,13 +148,13 @@ router.post('/beers/create', fileUploader.single('imageUrl'), async (req, res, n
           
             res.redirect(`/beers/details/${newBeerId}`);
             
-        } else {
+          /* else {
             const createdBeer = await Beer.create({ name, style, brewery, description, quantity, abv, brand});
             const newBeerId = createdBeer._id
             
-  /*           console.log(newBeerId)
+             console.log(newBeerId)
             console.log(restaurantId)
-            console.log(currentUser) */
+            console.log(currentUser)
 
             const beerUpdate = await Beer.findByIdAndUpdate(newBeerId, { $push: { restaurantId: restaurantId }});
             const restaurantUpdate = await Restaurant.findByIdAndUpdate(restaurantId, { $push: { beerId: newBeerId }});
@@ -153,9 +162,9 @@ router.post('/beers/create', fileUploader.single('imageUrl'), async (req, res, n
             const beerUpdateUser = await User.findByIdAndUpdate(currentUser, { $push: { beerId: newBeerId }});
 
             res.redirect(`/beers/details/${newBeerId}`);
-        }
+        
        
-/* 
+ 
         const beerUpdate = await Beer.findByIdAndUpdate(createdBeer._id, { $push: { restaurantId: idRest }});
 
         const restaurantUpdate = await Restaurant.findByIdAndUpdate(idRest, { $push: { beerId: createdBeer._id }});
@@ -165,8 +174,8 @@ router.post('/beers/create', fileUploader.single('imageUrl'), async (req, res, n
         const beerUpdateUser = await User.findByIdAndUpdate(currentUser, { $push: { beerId: createdBeer._id }});
 
         res.redirect(`/beer/details/${createdBeer._id}`);
-        */
-        res.redirect(`/`);
+    
+        res.redirect(`/`); */
         
     } catch (error) {
         console.log(error);
