@@ -13,10 +13,11 @@
 
     <form action="/restaurants/details/{{_id}}" method="post">
       
-      <input type="checkbox" />
-      <i class="icon-heart">
-        <i class="icon-plus-sign"></i>
-      </i>
+      {{#if isFav}}
+        <button type="submit">Remove from my favourite Restaurants</button>
+      {{else}}
+        <button type="submit">Add to my favourite Restaurants</button>
+      {{/if}}
 
     </form>
     

@@ -26,11 +26,19 @@ router.get('/restaurants', async (req, res, next) => {
 router.get('/restaurants/details/:id', async (req, res, next) => {
 
     const { id } = req.params;
+    const currentUser  = req.session.currentUser;
+    let isFav;
 
     try {
+        if(currentUser.favSpot.includes('id')) {
+            isFav = true;
+        } else {
+            isFav = false;
+        }
+
         const restaurant = await Restaurant.findById(id);
 
-        res.render('restaurant/restaurant-details', restaurant)
+        res.render('restaurant/restaurant-details', restaurant, isFav);
         
     } catch (error) {
         console.log(error);
@@ -43,9 +51,22 @@ router.post('/restaurants/details/:id', async (req, res, next) => {
 
     const { id } = req.params;
     const currentUser = req.session.currentUser._id;
+    const user = req.session.currentUser;
+    //let isFav;
 
     try {
-        const favouriteRestaurant = await User.findByIdAndUpdate(currentUser, { $push: { favSpot: id }});
+        /* console.log(user);
+        console.log(currentUser); */
+
+        if(user.favSpot.includes('id')) {
+            const favouriteRestaurant = await User.findByIdAndUpdate(currentUser, { $pull: { favSpot: id }});
+            //isFav = false;
+
+        } else {
+            const favouriteRestaurant = await User.findByIdAndUpdate(currentUser, { $push: { favSpot: id }});
+            //isFav = false;
+        }
+
 
         res.redirect(`/restaurants/details/${id}`);
         
@@ -73,11 +94,20 @@ router.get('/beers', async (req, res, next) => {
 router.get('/beers/details/:id', async (req, res, next) => {
 
     const { id } = req.params;
+    const currentUser = req.session.currentUser;
+    let isFav;
+    console.log(currentUser.favBeers.includes('id'));
 
     try {
+        if(currentUser.favBeers.includes('id')) {
+            isFav = true;
+        } else {
+            isFav = false;
+        }
+
         const beer = await Beer.findById(id);
 
-        res.render('beer/beer-details', beer)
+        res.render('beer/beer-details', beer, isFav );
         
     } catch (error) {
         console.log(error);
@@ -89,10 +119,22 @@ router.get('/beers/details/:id', async (req, res, next) => {
 router.post('/beers/details/:id', async (req, res, next) => {
 
     const { id } = req.params;
-    const currentUser  = req.session.currentUser._id;
+    const currentUser = req.session.currentUser._id;
+    const user = req.session.currentUser;
+    //let isFav;
 
     try {
-        const favouriteBeer = await User.findByIdAndUpdate(currentUser, { $push: { favBeers: id }});
+        console.log(user);
+        console.log(currentUser);
+
+        if(user.favBeers.includes('id')) {
+            const favouriteBeer = await User.findByIdAndUpdate(currentUser, { $pull: { favBeers: id }});
+            //isFav = false;
+
+        } else {
+            const favouriteBeer = await User.findByIdAndUpdate(currentUser, { $push: { favBeers: id }});
+            //isFav = false;
+        }
 
         res.redirect(`/beers/details/${id}`);
         
@@ -124,22 +166,18 @@ router.post('/beers/create', fileUploader.single('imageUrl'), async (req, res, n
 
     try {
         const currentUser = req.session.currentUser._id;
-        
         let imageUrl;
 
-        
         if(req.file){
 
             imageUrl = req.file.path
+
         } else {
             imageUrl = 'https://static-verticommnetwork1.netdna-ssl.com/img/products/default-2061-full.png';
         }
+
             const createdBeer = await Beer.create({ name, style, imageUrl, brewery, description, quantity, abv, brand });
             const newBeerId = createdBeer._id
-            
-            /* console.log(newBeerId)
-            console.log(restaurantId)
-            console.log(currentUser) */
           
             const beerUpdate = await Beer.findByIdAndUpdate(newBeerId, { $push: { restaurantId: restaurantId }});
             const restaurantUpdate = await Restaurant.findByIdAndUpdate(restaurantId, { $push: { beerId: newBeerId }});
@@ -195,6 +233,39 @@ router.get('/private/profile', async (req, res, next) => {
         
         res.render('profile/profile', { user }); 
 
+    } catch (error) {
+        console.log(error);
+        next(error);
+    }
+});
+
+
+router.get('/private/profile/edit/:id', async (req, res, next) => {
+
+    const { id } = req.params;
+
+    try {
+        const user = await User.findById(id);
+
+        res.render('profile/profile-edit', user);
+        
+    } catch (error) {
+        console.log(error);
+        next(error);
+    }
+});
+
+
+router.post('/private/profile/edit/:id', async (req, res, next) => {
+
+    const { id } = req.params;
+    const { username, email } = req.body;
+
+    try {
+        const updatedUser = await User.findByIdAndUpdate(id, { username, email });
+
+        res.redirect('/private/profile');
+        
     } catch (error) {
         console.log(error);
         next(error);

@@ -48,13 +48,15 @@
 
 
   <h1>Discover more about this Beer</h1>
+  
 <div class="container">
   <div class="cards">
     <div class="card-item">
       <div class="card-image">
        
           <img src="{{imageUrl}}" alt="image of {{name}} beer" />
-          </div>
+
+      </div>
           <div class="card-info">
           
             <h3 class="card-title">{{name}}</h3>
@@ -64,12 +66,21 @@
             <p>Quantity: {{quantity}}</p>
             <p>ABV: {{abv}}</p>
             <p>By: {{brand}}</p>
+
+
             <form action="/beers/details/{{_id}}" method="post">
-              <button type="submit">Add to favs</button></form>
+
+            {{#if isFav}}
+              <button type="submit">Remove from my favourite Beers</button>
+            {{else}}
+              <button type="submit">Add to my favourite Beers</button>
+            {{/if}}
+
+            </form>
           </div>
       
       
     
+    </div>
   </div>
-</div>
 </div>
