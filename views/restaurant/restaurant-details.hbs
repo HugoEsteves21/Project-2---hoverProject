@@ -5,6 +5,15 @@
     <h3>{{name}}</h3>
     <p>Where: {{location.adress}}</p>
     <p>Rating: {{rating}}</p>
+
+    <div>
+      <h5>Feeling thirsty? See what you can drink:</h5>
+        <ul>
+          {{#each user.beerId}}
+            <li>{{name}}</li>
+          {{/each}}
+        </ul>
+    </div>
     
     
     <p>Reviews: {{reviews}}</p>

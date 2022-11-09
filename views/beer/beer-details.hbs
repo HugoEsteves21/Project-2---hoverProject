@@ -48,6 +48,23 @@
 
 
   <h1>Discover more about this Beer</h1>
+
+
+  <form action="/beers/details/{{_id}}" method="post">
+  
+    <label for="restaurantId">Select Restaurant:</label>
+    
+    <select name="restaurantId">
+
+      {{#each allRestaurants}}
+        <option  class='restaurants' value="{{_id}}">{{name}}</option>
+      {{/each}}
+
+    </select>
+
+    <button type="submit">Add to Restaurant</button>
+  </form>
+
   
 <div class="container">
   <div class="cards">
@@ -66,6 +83,15 @@
             <p>Quantity: {{quantity}}</p>
             <p>ABV: {{abv}}</p>
             <p>By: {{brand}}</p>
+
+            <div>
+              <h5>Where to drink me:</h5>
+              <ul>
+                {{#each user.restaurantId}}
+                  <li>{{name}}</li>
+                {{/each}}
+              </ul>
+            </div>
 
 
             <form action="/beers/details/{{_id}}" method="post">
