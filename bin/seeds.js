@@ -1,8 +1,7 @@
 const mongoose = require("mongoose");
 const Restaurant = require("../models/Restaurant.model");
 
-const MONGO_URI = 'mongodb+srv://HugoEsteves21:ironhack@cluster0.qhpvyok.mongodb.net/?retryWrites=true&w=majority'
-  //process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/hoverProject";
+const MONGO_URI = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/hoverProject";
 
 const restaurants = [
   {
