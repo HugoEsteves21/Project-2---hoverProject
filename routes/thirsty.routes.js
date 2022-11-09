@@ -32,17 +32,18 @@ router.get('/restaurants/details/:id', isLoggedIn, async (req, res, next) => {
     let isFav;
 
     try {
-        if(currentUser.favSpot.includes('id')) {
-            isFav = true;
-        } else {
-            isFav = false;
-        }
+    const thisUser = await User.findById(currentUser._id);
 
-        const restaurant = await Restaurant.findById(id)
-        .populate('beerId');
+    if(thisUser.favSpot.includes(`${id}`)) {
+        isFav = true;
+    } 
 
+    const restaurant = await Restaurant.findById(id)
+    .populate('beerId');
 
-        res.render('restaurant/restaurant-details', restaurant, isFav);
+    const allBeers = await Beer.find();
+
+    res.render('restaurant/restaurant-details', {restaurant,  allBeers, isFav} );
         
     } catch (error) {
         console.log(error);
@@ -51,28 +52,55 @@ router.get('/restaurants/details/:id', isLoggedIn, async (req, res, next) => {
 });
 
 
+router.post('/restaurants/addFavs/:id', isLoggedIn, async (req, res, next) => {
+    
+    const { id } = req.params;
+    const currentUser = req.session.currentUser._id;
+
+    try {
+        const favouriteRestaurant = await User.findByIdAndUpdate(currentUser, { $push: { favSpot: id }});
+
+        res.redirect(`/restaurants/details/${id}`);
+
+    } catch (error) {
+        console.log(error);
+        next(error);
+    }
+});
+
+
+router.post('/restaurants/removeFavs/:id', isLoggedIn, async (req, res, next) => {
+    
+    const { id } = req.params;
+    const currentUser = req.session.currentUser._id;
+
+    try {
+        const favouriteRestaurant = await User.findByIdAndUpdate(currentUser, { $pull: { favSpot: id }});
+        
+        res.redirect(`/restaurants/details/${id}`);
+
+    } catch (error) {
+        console.log(error);
+        next(error);
+    }
+});
+
+
+
 router.post('/restaurants/details/:id', isLoggedIn, async (req, res, next) => {
 
     const { id } = req.params;
     const currentUser = req.session.currentUser._id;
     const user = req.session.currentUser;
-    //let isFav;
+    const { restaurantId } = req.body;
 
-    try {
-        /* console.log(user);
-        console.log(currentUser); */
-
-        if(user.favSpot.includes('id')) {
-            const favouriteRestaurant = await User.findByIdAndUpdate(currentUser, { $pull: { favSpot: id }});
-            //isFav = false;
-
-        } else {
-            const favouriteRestaurant = await User.findByIdAndUpdate(currentUser, { $push: { favSpot: id }});
-            //isFav = false;
-        }
-
-
-        res.redirect(`/restaurants/details/${id}`);
+    try {         
+        const beerUpdate = await Beer.findByIdAndUpdate(id, { $push: { restaurantId: restaurantId }});
+        const restaurantUpdate = await Restaurant.findByIdAndUpdate(restaurantId, { $push: { beerId: id }});
+        const restaurantUpdateUser = await User.findByIdAndUpdate(currentUser, { $push: { restaurantId: restaurantId }});
+        const beerUpdateUser = await User.findByIdAndUpdate(currentUser, { $push: { beerId: id }});
+        
+        res.redirect(`/beers/details/${id}`);
         
     } catch (error) {
         console.log(error);
@@ -100,26 +128,47 @@ router.get('/beers/details/:id', isLoggedIn, async (req, res, next) => {
     const { id } = req.params;
     const currentUser = req.session.currentUser;
     let isFav;
-    //console.log(currentUser.favBeers.includes('id'));
 
     try {
-        //const restaurants = await Restaurant.find()
+    const thisUser = await User.findById(currentUser._id);
 
-        if(currentUser.favBeers.includes('id')) {
-            isFav = true;
-        } else {
-            isFav = false;
-        }
+    if(thisUser.favBeers.includes(`${id}`)) {
+        isFav = true;
+    } 
 
-        const beer = await Beer.findById(id)
-        .populate('restaurantId');
+    const beer = await Beer.findById(id)
+    .populate('restaurantId');
 
-        const allRestaurants = await Restaurant.find();
+    const allRestaurants = await Restaurant.find();
 
-        console.log(allRestaurants);
-
-        res.render('beer/beer-details', beer, isFav, { allRestaurants });
+    res.render('beer/beer-details', {beer,  allRestaurants, isFav} );
         
+    } catch (error) {
+        console.log(error);
+        next(error);
+    }
+});
+
+
+router.post('/beers/addFavs/:id', isLoggedIn, async (req, res, next) => {
+    const { id } = req.params;
+    const currentUser = req.session.currentUser._id;
+    try {
+        console.log(id)
+        const favouriteBeer = await User.findByIdAndUpdate(currentUser, { $push: { favBeers: id }});
+        res.redirect(`/beers/details/${id}`);
+    } catch (error) {
+        console.log(error);
+        next(error);
+    }
+});
+
+router.post('/beers/removeFavs/:id', isLoggedIn, async (req, res, next) => {
+    const { id } = req.params;
+    const currentUser = req.session.currentUser._id;
+    try {
+        const favouriteBeer = await User.findByIdAndUpdate(currentUser, { $pull: { favBeers: id }});
+        res.redirect(`/beers/details/${id}`);
     } catch (error) {
         console.log(error);
         next(error);
@@ -132,27 +181,13 @@ router.post('/beers/details/:id', isLoggedIn, async (req, res, next) => {
     const { id } = req.params;
     const currentUser = req.session.currentUser._id;
     const user = req.session.currentUser;
-    /* const { restaurantId } = req.body; */
-    //let isFav;
+    const { restaurantId } = req.body;
 
-    try {
-        /* console.log(user);
-        console.log(currentUser); */
-
-        if(user.favBeers.includes('id')) {
-            const favouriteBeer = await User.findByIdAndDelete(currentUser, { $pull: { favBeers: id }});
-            //isFav = false;
-            
-        } else {
-            const favouriteBeer = await User.findByIdAndUpdate(currentUser, { $push: { favBeers: id }});
-            //isFav = false;
-            
-        }
-          
-        /* const beerUpdate = await Beer.findByIdAndUpdate(id, { $push: { restaurantId: restaurantId }});
+    try { 
+        const beerUpdate = await Beer.findByIdAndUpdate(id, { $push: { restaurantId: restaurantId }});
         const restaurantUpdate = await Restaurant.findByIdAndUpdate(restaurantId, { $push: { beerId: id }});
         const restaurantUpdateUser = await User.findByIdAndUpdate(currentUser, { $push: { restaurantId: restaurantId }});
-        const beerUpdateUser = await User.findByIdAndUpdate(currentUser, { $push: { beerId: id }}); */
+        const beerUpdateUser = await User.findByIdAndUpdate(currentUser, { $push: { beerId: id }});
         
         res.redirect(`/beers/details/${id}`);
         
@@ -203,35 +238,6 @@ router.post('/beers/create', fileUploader.single('imageUrl'), async (req, res, n
             const beerUpdateUser = await User.findByIdAndUpdate(currentUser, { $push: { beerId: newBeerId }});
           
             res.redirect(`/beers/details/${newBeerId}`);
-            
-          /* else {
-            const createdBeer = await Beer.create({ name, style, brewery, description, quantity, abv, brand});
-            const newBeerId = createdBeer._id
-            
-             console.log(newBeerId)
-            console.log(restaurantId)
-            console.log(currentUser)
-
-            const beerUpdate = await Beer.findByIdAndUpdate(newBeerId, { $push: { restaurantId: restaurantId }});
-            const restaurantUpdate = await Restaurant.findByIdAndUpdate(restaurantId, { $push: { beerId: newBeerId }});
-            const restaurantUpdateUser = await User.findByIdAndUpdate(currentUser, { $push: { restaurantId: restaurantId }});
-            const beerUpdateUser = await User.findByIdAndUpdate(currentUser, { $push: { beerId: newBeerId }});
-
-            res.redirect(`/beers/details/${newBeerId}`);
-        
-       
- 
-        const beerUpdate = await Beer.findByIdAndUpdate(createdBeer._id, { $push: { restaurantId: idRest }});
-
-        const restaurantUpdate = await Restaurant.findByIdAndUpdate(idRest, { $push: { beerId: createdBeer._id }});
-
-        const restaurantUpdateUser = await User.findByIdAndUpdate(currentUser, { $push: { restaurantId: idRest }});
-
-        const beerUpdateUser = await User.findByIdAndUpdate(currentUser, { $push: { beerId: createdBeer._id }});
-
-        res.redirect(`/beer/details/${createdBeer._id}`);
-    
-        res.redirect(`/`); */
         
     } catch (error) {
         console.log(error);
@@ -299,11 +305,11 @@ router.get('/search/', isLoggedIn, async (req, res, next) => {
 
     try {
         const searchBeers = await Beer.find(
-            {$or: [
-                {'name': name },
-                {'style': style},
+            {$or: 
+                [{'name': name }
+                /* {'style': style},
                 {'brewery': brewery},
-                {'brand': brand},
+                {'brand': brand}, */
             ]});
         
         console.log(searchBeers);
