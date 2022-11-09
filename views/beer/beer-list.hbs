@@ -1,9 +1,9 @@
 <div><h1 style="float: left;">What do you want to drink?</h1>
-<div class="create-button">
-  <form action="/beers/create" method="get">
-    <button type="submit">Create your Beer</button>
-  </form>
-</div>
+  <div class="create-button">
+    <form action="/beers/create" method="get">
+      <button type="submit">Create your Beer</button>
+    </form>
+  </div>
 </div>
 
 {{!-- {{#each beers}}
@@ -18,9 +18,7 @@
 
 {{/each}} --}}
 
-
-{{!-- --------------------------------------------------------------------- --}}
-
+{{! --------------------------------------------------------------------- }}
 
 {{!-- {{#each beers}}
 <div class="container">
@@ -43,9 +41,7 @@
 </div>
 {{/each}} --}}
 
-
-
-{{!-- Era suposto usarmos este código!!! --}}
+{{! Era suposto usarmos este código!!! }}
 
 {{!-- {{#each beers}}
 <div class="container">
@@ -64,22 +60,20 @@
   </div>
   {{/each}} --}}
 
-
-
-    <div class="container">
+<div class="container">
   {{#each beers}}
-      <div class="cards">
-        <div class="card-item">
-          <div class="card-image">
-            <img src="{{imageUrl}}" alt="image of {{name}} beer"/>
-          </div>
-          <div class="card-info">
-            <h2 class="card-title">{{name}}</h2>
-            <p class="card-intro"><p>Style: {{style}}</p>
-        <p>By: {{brand}}</p>
-        <a href='/beers/details/{{_id}}'>Checkout More!</a></p>
-          </div>
+    <div class="cards">
+      <div class="card-item">
+        <div class="card-image">
+          <img src="{{imageUrl}}" alt="image of {{name}} beer" />
+        </div>
+        <div class="card-info">
+          <h2 class="card-title">{{name}}</h2>
+          <p class="card-intro"><p>Style: {{style}}</p>
+            <p class="card-intro">By: {{brand}}</p>
+            <a class="card-intro" href="/beers/details/{{_id}}">Checkout More!</a></p>
         </div>
       </div>
-  {{/each}}
     </div>
+  {{/each}}
+</div>
