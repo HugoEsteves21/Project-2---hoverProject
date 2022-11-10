@@ -10,8 +10,20 @@
     <p>You can easily find the best spots by searching for a specific Beer or a
       specific Place.</p>
 
-    <a class="tag" href="/signup">Signup</a>
-    <a class="tag" href="/login">Login</a>
+    
+    {{#unless currentUser}}
+
+      <a class="tag" href="/login">Login</a>
+      <a class="tag" href="/signup">Signup</a>
+
+    {{/unless}}
+
+    {{#if currentUser}}
+
+      <a class="tag" href="/beers">Checkout what to drink</a>
+      <a class="tag" href="/restaurants">Checkout where to drink</a>
+
+    {{/if}}
 
   </div>
 </div>

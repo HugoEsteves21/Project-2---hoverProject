@@ -1,0 +1,29 @@
+<div class="padding">
+  <form action="/restaurants/create" method="POST" enctype="multipart/form-data">
+    <label for="">Name:</label>
+    <input type="text" name="name" id="" value="{{restaurant.name}}" />
+
+    {{! adding the picture of the restaurant }}
+    <label for="image">
+      Image:
+      <input type="file" name="image" value="{{restaurant.image}}" />
+    </label>
+
+    <label for="location">Address:</label>
+    <input type="text" name="location" id="location" value="{{restaurant.location}}" />
+    <label for="rating">Rating:</label>
+    <input type="text" name="rating" id="rating" value="{{restaurant.rating}}" />
+    
+    
+
+    {{! array of beers in the database }}
+    {{!-- <label for="">Bar:</label> --}}
+    <select name="beerId" multiple>
+      {{#each beers}}
+        <option  class='restaurants' value="{{_id}}">{{name}}</option>
+      {{/each}}
+    </select>
+
+    <button type="submit">Add your special bar</button>
+  </form>
+</div>

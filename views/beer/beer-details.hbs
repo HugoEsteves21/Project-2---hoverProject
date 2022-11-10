@@ -85,11 +85,16 @@
             <p>By: {{beer.brand}}</p>
 
             <div>
-              <h5>Where to drink me:</h5>
+              <h5>In a hurry? Where to find me:</h5>
               <ul>
-                {{#each user.restaurantId}}
-                  <li>{{name}}</li>
-                {{/each}}
+                {{#if beer.restaurantId.length}}
+                  {{#each beer.restaurantId}}
+                    <li>{{name}}</li>
+                  {{/each}}
+                {{else}}
+                  <p>Ups! Nowhere to be found...</p>
+                  <p>Go look somewhere else... 😔</p>
+                {{/if}}
               </ul>
             </div>
 
