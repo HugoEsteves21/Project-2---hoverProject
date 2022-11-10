@@ -11,6 +11,7 @@ const Restaurant = require('../models/Restaurant.model');
 
 
 
+
 router.get('/restaurants', isLoggedIn, async (req, res, next) => {
 
     try {
@@ -84,7 +85,6 @@ router.post('/restaurants/removeFavs/:id', isLoggedIn, async (req, res, next) =>
         next(error);
     }
 });
-
 
 
 router.post('/restaurants/details/:id', isLoggedIn, async (req, res, next) => {
@@ -162,6 +162,7 @@ router.post('/beers/addFavs/:id', isLoggedIn, async (req, res, next) => {
         next(error);
     }
 });
+
 
 router.post('/beers/removeFavs/:id', isLoggedIn, async (req, res, next) => {
     const { id } = req.params;
