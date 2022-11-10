@@ -27,6 +27,18 @@ body {
   margin-top: 30px;
 }
 
+.container-2 {
+  display: flex;
+  -webkit-display: box;
+  -moz-display: box;
+  -ms-display: flexbox;
+  -webkit-display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .container {
   display: flex;
   -webkit-display: box;
@@ -44,6 +56,20 @@ body {
   margin-bottom: 2rem;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+.card-item-2 {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  width: 390px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  border-radius: 6px;
+  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  transition: transform 0.5s;
+  -webkit-transition: transform 0.5s;
 }
 
 .card-item {
@@ -205,6 +231,15 @@ header .profile-image:hover {
   display: table;
   margin: 10px auto;
 }
+
+.tag2 {
+  background-color: #efefef;
+  color: black;
+  
+  border-radius: 5px;
+
+}
+
 .location {
   background-color: rgb(255, 255, 255);
   color: rgb(255, 153, 0);
@@ -227,4 +262,18 @@ header .profile-image:hover {
   --bs-btn-disabled-color: #fff;
   --bs-btn-disabled-bg: #9c7115;
   --bs-btn-disabled-border-color: #9c7115;
+}
+
+/* --------------------------------------- */
+
+.profile-favs {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  padding: 40px;
+  justify-content: space-between;
+}
+
+.center-title {
+  text-align: center;
 }

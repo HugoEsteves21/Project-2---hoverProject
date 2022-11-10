@@ -1,123 +1,62 @@
-{{!-- <h1>Discover more about this Beer</h1>
-<div class="container">
-  <div class="card-deck row">
-    <div class="col-xs-12 col-sm-6 col-md-4">
-      <div class="card">
-        <div class="view-overlay">
-          <img src="{{imageUrl}}" alt="image of {{name}} beer" />
-          <div class="mask rgba-white-slight"></div>
-          <div class="card-body">
-            <h3>{{name}}</h3>
-            <p>Style: {{style}}</p>
-            <p>Brewery: {{brewery}}</p>
-            <p>Descripton: {{description}}</p>
-            <p>Quantity: {{quantity}}</p>
-            <p>ABV: {{abv}}</p>
-            <p>By: {{brand}}</p>
-            <form action="/beers/details/{{_id}}" method="post">
-              <button type="submit">Add to favs</button></form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> --}}
-
-{{!-- <div>
-    <img src="{{imageUrl}}" alt="image of {{name}} beer" />
-    <h3>{{name}}</h3>
-    <p>Style: {{style}}</p>
-    <p>Brewery: {{brewery}}</p>
-    <p>Descripton: {{description}}</p>
-    <p>Quantity: {{quantity}}</p>
-    <p>ABV: {{abv}}</p>
-    <p>By: {{brand}}</p>
-
-
-    <form action="/beers/details/{{_id}}" method="post">
-      
-      <input type="checkbox" />
-      <i class="icon-heart">
-        <i class="icon-plus-sign"></i>
-      </i>
-
-    </form>
-    
-  </div> --}}
-
-
-
-  <h1>Discover more about this Beer</h1>
-
-
+<div class="center-title">
+  <h1>More about this Beer:</h1>
   <form action="/beers/details/{{beer._id}}" method="post">
-  
     <label for="restaurantId">Select Restaurant:</label>
-    
     <select name="restaurantId">
 
       {{#each allRestaurants}}
-        <option  class='restaurants' value="{{_id}}">{{name}}</option>
+        <option class="restaurants" value="{{_id}}">{{name}}</option>
       {{/each}}
 
     </select>
 
-    <button type="submit">Add to Restaurant</button>
+    <button class="tag2" type="submit">Add to Restaurant</button>
   </form>
+</div>
 
-  
-<div class="container">
+<div class="container-2">
   <div class="cards">
-    <div class="card-item">
+    <div class="card-item-2">
       <div class="card-image">
-       
-          <img src="{{beer.imageUrl}}" alt="image of {{beer.name}} beer" />
+
+        <img src="{{beer.imageUrl}}" alt="image of {{beer.name}} beer" />
 
       </div>
-          <div class="card-info">
-          
-            <h3 class="card-title">{{beer.name}}</h3>
-            <p>Style: {{beer.style}}</p>
-            <p>Brewery: {{beer.brewery}}</p>
-            <p>Descripton: {{beer.description}}</p>
-            <p>Quantity: {{beer.quantity}}</p>
-            <p>ABV: {{beer.abv}}</p>
-            <p>By: {{beer.brand}}</p>
+      <div class="card-info">
 
-            <div>
-              <h5>In a hurry? Where to find me:</h5>
-              <ul>
-                {{#if beer.restaurantId.length}}
-                  {{#each beer.restaurantId}}
-                    <li>{{name}}</li>
-                  {{/each}}
-                {{else}}
-                  <p>Ups! Nowhere to be found...</p>
-                  <p>Go look somewhere else... 😔</p>
-                {{/if}}
-              </ul>
-            </div>
+        <h3 class="card-title">{{beer.name}}</h3>
+        <p><strong>Style:</strong> {{beer.style}}</p>
+        <p><strong>Brewery:</strong>: {{beer.brewery}}</p>
+        <p><strong>Description:</strong> <br /> {{beer.description}}</p>
+        <p><strong>ABV:</strong><br /> {{beer.abv}}</p>
+        <p><strong>By:</strong> <br />{{beer.brand}}</p>
 
+        <div>
+          <h5>In a hurry? Where to find me:</h5>
+          <ul>
+            {{#if beer.restaurantId.length}}
+              {{#each beer.restaurantId}}
+                <li>{{name}}</li>
+              {{/each}}
+            {{else}}
+              <p>Ups! Nowhere to be found...</p>
+              <p>Go look somewhere else... 😔</p>
+            {{/if}}
+          </ul>
+        </div>
 
-   
+        {{#if isFav}}
+          <form action="/beers/removeFavs/{{beer._id}}" method="post">
+            <button class="tag name" type="submit">Remove from my favourite
+              Beers</button>
+          </form>
+        {{else}}
+          <form action="/beers/addFavs/{{beer._id}}" method="post">
+            <button class="tag name" type="submit">Add to my favourite Beer</button>
+          </form>
+        {{/if}}
 
-      {{#if isFav}}
-        <form action="/beers/removeFavs/{{beer._id}}" method="post">
-          <button type="submit">Remove from my favourite Beers</button>
-        </form>
-      {{else}}
-        <form action="/beers/addFavs/{{beer._id}}" method="post">
-          <button type="submit">Add to my favourite Beer</button>
-        </form>
-      {{/if}}
-     
-         
-
-          
-          </div>
-      
-      
-    
+      </div>
     </div>
   </div>
 </div>

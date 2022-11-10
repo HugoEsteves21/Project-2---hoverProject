@@ -1,13 +1,27 @@
-<h1>Discover more about this Restaurant</h1>
+<div class="center-title">
+<h1>More about this Restaurant:</h1>
+</div>
 
-  <div>
-    <img src="{{restaurant.image}}" alt="image of {{restaurant.name}} restaurant" />
-    <h3>{{restaurant.name}}</h3>
-    <p>Where should we go? {{restaurant.location.adress}}</p>
-    <p>What's the rating? {{restaurant.rating}}</p>
+
+
+
+<div class="container-2">
+  <div class="cards">
+    <div class="card-item-2">
+      <div class="card-image">
+
+        <img src="{{restaurant.image}}" alt="image of {{restaurant.name}} restaurant" />
+
+      </div>
+
+  <div class="card-info">
+  
+    <h3 class="card-title">{{restaurant.name}}</h3>
+    <p><strong>Where should we go?</strong><br>{{restaurant.location}}</p>
+    <p><strong>What's the rating?</strong><br /> {{restaurant.rating}}</p>
 
     <div>
-      <h5>Feeling thirsty? See what you can drink:</h5>
+      <h5><strong>Feeling thirsty?</strong><br />See what you can drink:</h5>
         <ul>
           {{#if restaurant.beerId.length}}
             {{#each restaurant.beerId}}
@@ -19,22 +33,20 @@
           {{/if}}
         </ul>
     </div>
-    
-    
-    {{!-- <p>Reviews: {{restaurant.reviews}}</p> --}}
-    
-
-      
+          
       {{#if isFav}}
         <form action="/restaurants/removeFavs/{{restaurant._id}}" method="post">
-          <button type="submit">Remove from my favourite Restaurants</button>
+          <button class="tag name" type="submit">Remove from my favourite Restaurants</button>
         </form>
       {{else}}
         <form action="/restaurants/addFavs/{{restaurant._id}}" method="post">
-          <button type="submit">Add to my favourite Restaurants</button>
+          <button class="tag name" type="submit">Add to my favourite Restaurants</button>
         </form>
       {{/if}}
 
     </form>
     
   </div>
+    </div>
+  </div>
+</div>
