@@ -1,7 +1,7 @@
-<link rel="stylesheet" href="/stylesheets/create.css" />
+{{!-- <link rel="stylesheet" href="/stylesheets/create.css" /> --}}
 
 
-<div id="beer-create" class="padding">
+<div id="background-image" class="padding">
   <h1>Are you Thirsty?</h1>
   <hr />
   <div>
@@ -13,19 +13,19 @@
     <p>You can easily find the best spots by searching for a specific Beer or a
       specific Place.</p>
 
-    
     {{#unless currentUser}}
 
+    
       <a class="tag" href="/login">Login</a>
       <a class="tag" href="/signup">Signup</a>
-
+    
     {{/unless}}
 
     {{#if currentUser}}
-
+    
       <a class="tag" href="/beers">Checkout what to drink</a>
       <a class="tag" href="/restaurants">Checkout where to drink</a>
-
+    
     {{/if}}
 
   </div>
@@ -33,7 +33,7 @@
 
 
 
-<div class="bottom-particles">
+{{!-- <div class="bottom-particles">
   <div class="bubble"></div>
   <div class="bubble"></div>
   <div class="bubble"></div>
@@ -76,5 +76,5 @@
   <div class="bubble"></div>
 </div>
 <div id="foam"></div>
-{{!-- <h1 class="text-light">CSS Beer</h1>
+<h1 class="text-light">CSS Beer</h1>
 <p class="text-light">Original bubbles by Paulo Duzioni</p> --}}

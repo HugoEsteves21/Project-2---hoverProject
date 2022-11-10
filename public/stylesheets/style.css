@@ -302,6 +302,8 @@ header .profile-image:hover {
   flex-wrap: wrap;
   margin-top: 20px;
   padding: 40px;
+  padding-left: 100px;
+  padding-right: 100px;
   justify-content: space-between;
 }
 
@@ -327,3 +329,4 @@ header .profile-image:hover {
   margin-bottom: 0.8em;
   align-items: center;
 }
+
