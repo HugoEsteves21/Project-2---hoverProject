@@ -3,20 +3,25 @@
   <div>
     <img src="{{restaurant.image}}" alt="image of {{restaurant.name}} restaurant" />
     <h3>{{restaurant.name}}</h3>
-    <p>Where: {{restaurant.location.adress}}</p>
-    <p>Rating: {{restaurant.rating}}</p>
+    <p>Where should we go? {{restaurant.location.adress}}</p>
+    <p>What's the rating? {{restaurant.rating}}</p>
 
     <div>
       <h5>Feeling thirsty? See what you can drink:</h5>
         <ul>
-          {{#each restaurant.beerId}}
-            <li>{{name}}</li>
-          {{/each}}
+          {{#if restaurant.beerId.length}}
+            {{#each restaurant.beerId}}
+              <li>{{name}} by: {{brand}}</li>
+            {{/each}}
+          {{else}}
+            <p>Ups! Nothing to drink here...</p>
+            <p>Just water... 🤢</p>
+          {{/if}}
         </ul>
     </div>
     
     
-    <p>Reviews: {{restaurant.reviews}}</p>
+    {{!-- <p>Reviews: {{restaurant.reviews}}</p> --}}
     
 
       

@@ -6,7 +6,11 @@ const restaurantSchema = new Schema(
       type: String,
       required: true,
     },
-    image: String,
+    image: {
+      type: String,
+      default: 'https://i.ibb.co/zxRZ9FC/pub-5537449-1280.jpg'
+    },
+
     location: {},
     rating: Number,
     beerId: [
