@@ -1,36 +1,50 @@
 <link rel="stylesheet" href="/stylesheets/create.css" />
 
 <div class="page-title">
-    <h1>Create your poison:</h1>
+    <h1>Create your spot:</h1>
 </div>
 
-<div class="padding">
+<div class="create-pages">
+
   <form action="/restaurants/create" method="POST" enctype="multipart/form-data">
-    <label for="">Name:</label>
-    <input type="text" name="name" id="" value="{{restaurant.name}}" />
+    
+    <div class="general-create-form">
+        <label for=""><strong>Name:</strong></label>
+        <input class="boxes" type="text" name="name" id="" value="{{restaurant.name}}" />
+    </div>
 
     {{! adding the picture of the restaurant }}
-    <label for="image">
-      Image:
-      <input type="file" name="image" value="{{restaurant.image}}" />
-    </label>
+    <div class="general-create-form">
+        <label for="image"><strong>Image:</strong>
+            <input class="image-box" type="file" name="image" value="{{restaurant.image}}" />
+        </label>
+    </div>
 
-    <label for="location">Address:</label>
-    <input type="text" name="location" id="location" value="{{restaurant.location}}" />
-    <label for="rating">Rating:</label>
-    <input type="text" name="rating" id="rating" value="{{restaurant.rating}}" />
-    
-    
+    <div class="general-create-form">
+        <label for="location"><strong>Address:</strong></label>
+        <input class="boxes" type="text" name="location" id="location" value="{{restaurant.location}}" />
+    </div>
 
+    <div class="general-create-form">
+        <label for="rating"><strong>Rating:</strong></label>
+        <input class="boxes" type="text" name="rating" id="rating" value="{{restaurant.rating}}" />
+    </div>
+    
+    <div class="general-create-form">
     {{! array of beers in the database }}
     {{!-- <label for="">Bar:</label> --}}
-    <select name="beerId" multiple>
-      {{#each beers}}
-        <option  class='restaurants' value="{{_id}}">{{name}}</option>
-      {{/each}}
-    </select>
+        <label for="restaurantId"><strong>What did you drink?:</strong></label>
+        <select class="boxes" name="beerId" multiple>
+            {{#each beers}}
+                <option  class='restaurants' value="{{_id}}">{{name}}</option>
+            {{/each}}
+        </select>
+    </div>
 
-    <button type="submit">Add your special bar</button>
+    <div class="general-create-form">
+        <button class="tag2" type="submit"><strong>Add your special bar</strong></button>
+    </div>
+
   </form>
 </div>
 
