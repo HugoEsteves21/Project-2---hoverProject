@@ -1,58 +1,120 @@
 <link rel="stylesheet" href="/stylesheets/create.css" />
 
-<div class="padding create-pages">
-  <form action="/beers/create" method="POST" enctype="multipart/form-data">
+<div class="page-title">
+    <h1>Create your poison:</h1>
+</div>
+
+<div class="create-pages">
+  
+  <form id="beer-create" action="/beers/create" method="POST" enctype="multipart/form-data">
     
-    <div>
-      <label for="">Name:</label>
-      <input type="text" name="name" id="" value="{{beer.name}}" />
+    <div class="general-create-form">
+      <label for=""><strong>Name:</strong></label>
+      <input class="boxes" type="text" name="name" id="" value="{{beer.name}}" />
     </div>
 
     {{! adding the picture of the beer }}
-    <div>
-      <label for="imageUrl">Image:
-        <input type="file" name="imageUrl" value="{{beer.imageUrl}}" />
+    <div class="general-create-form">
+      <label for="imageUrl"><strong>Image:</strong>
+        <input class="image-box" type="file" name="imageUrl" value="{{beer.imageUrl}}" />
       </label>
     </div>
 
-    <div>
-      <label for="style">Style:</label>
-      <input type="text" name="style" id="style" value="{{beer.style}}" />
+    <div class="general-create-form">
+      <label for="style"><strong>Style:</strong></label>
+      <input class="boxes" type="text" name="style" id="style" value="{{beer.style}}" />
     </div>
 
-    <div>
-      <label for="brewery">Brewery:</label>
-      <input type="text" name="brewery" id="brewery" value="{{beer.brewery}}" />
+    <div class="general-create-form">
+      <label for="brewery"><strong>Brewery:</strong></label>
+      <input class="boxes" type="text" name="brewery" id="brewery" value="{{beer.brewery}}" />
     </div>
 
-    <div>
-      <label for="brand">Brand:</label>
-      <input type="text" name="brand" id="brand" value="{{beer.brand}}" />
+    <div class="general-create-form">
+      <label for="brand"><strong>Brand:</strong></label>
+      <input class="boxes" type="text" name="brand" id="brand" value="{{beer.brand}}" />
     </div>
 
-    <div>
-      <label for="quantity">Quantity:</label>
-      <input type="text" name="quantity" id="quantity" value="{{beer.quantity}}"/>
+    <div class="general-create-form">
+      <label for="quantity"><strong>Quantity:</strong></label>
+      <input class="boxes" type="text" name="quantity" id="quantity" value="{{beer.quantity}}"/>
     </div>
 
-    <label for="abv">ABV:</label>
-    <input type="text" name="abv" id="abv" value="{{beer.abv}}" />
-    <label for="description">Description:</label>
-    <textarea
-      name="description"
-      id="description"
-      cols="30"
-      rows="10"
-    ></textarea>
+    <div class="general-create-form">
+      <label for="abv"><strong>ABV:</strong></label>
+      <input class="boxes" type="text" name="abv" id="abv" value="{{beer.abv}}" />
+    </div>
 
-    {{! array of restaurants in the database }}
-    {{!-- <label for="">Bar:</label> --}}
-    <select name="restaurantId">
-      {{#each restaurants}}
-        <option  class='restaurants' value="{{_id}}">{{name}}</option>
-      {{/each}}
-    </select>
+    <div class="general-create-form">
+      <label for="description"><strong>Description:</strong></label>
+      <textarea class="boxes" name="description" id="description" cols="30" rows="2"></textarea>
+    </div>
 
-    <button type="submit">Add your special beer</button>
+    <div class="general-create-form">
+      {{! array of restaurants in the database }}
+      {{!-- <label for="">Bar:</label> --}}
+      <label for="restaurantId"><strong>Where were you?:</strong></label>
+      <select class="boxes" name="restaurantId">
+        {{#each restaurants}}
+          <option  class='restaurants' value="{{_id}}">{{name}}</option>
+        {{/each}}
+      </select>
+    </div>
+
+    <div class="general-create-form">
+      <button class="tag2" type="submit"><strong>Add your special beer</strong></button>
+    </div>
+
   </form>
+
 </div>
+
+
+
+<!-- Bubbles Pen https://codepen.io/Paolo-Duzioni/pen/MQmbJo-->
+<div class="bottom-particles">
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+</div>
+<div id="foam"></div>
+{{!-- <h1 class="text-light">CSS Beer</h1>
+<p class="text-light">Original bubbles by Paulo Duzioni</p> --}}
+

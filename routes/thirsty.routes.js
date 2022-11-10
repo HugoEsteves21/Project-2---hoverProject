@@ -356,11 +356,18 @@ router.get('/search/', isLoggedIn, async (req, res, next) => {
     try {
         const searchBeers = await Beer.find(
             {$or: 
-                [{'name': name }
-                /* {'style': style},
-                {'brewery': brewery},
-                {'brand': brand}, */
+                [{name: {$regex: name } },
+                 {style: {$regex: name }},
+                {brewery: {$regex: name }},
+                {brand: {$regex: name }}, 
             ]});
+        /* const searchBeers = await Beer.find(
+            {name: 
+                {$regex: name }
+                 {'style': style},
+                {'brewery': brewery},
+                {'brand': brand},
+            }); */
         
         console.log(searchBeers);
 
