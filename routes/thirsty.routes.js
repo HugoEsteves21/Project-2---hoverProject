@@ -140,10 +140,10 @@ router.post('/restaurants/create', fileUploader.single('image'), async (req, res
         }  else {
             image = 'https://i.ibb.co/zxRZ9FC/pub-5537449-1280.jpg';
         }
-
-            const createdRestaurant = await Restaurant.create({ name, location, rating });
+            
+            const createdRestaurant = await Restaurant.create({ name, image, location, rating });
             const newRestaurantId = createdRestaurant._id
-          
+            
             const restaurantUpdate = await Restaurant.findByIdAndUpdate(newRestaurantId, { $push: { beerId: beerId }});
             const beerUpdate = await Beer.findByIdAndUpdate(beerId, { $push: { restaurantId: newRestaurantId }});
             const beerUpdateUser = await User.findByIdAndUpdate(currentUser, { $push: { beerId: beerId }});

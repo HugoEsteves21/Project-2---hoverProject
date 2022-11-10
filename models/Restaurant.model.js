@@ -11,7 +11,7 @@ const restaurantSchema = new Schema(
       default: 'https://i.ibb.co/zxRZ9FC/pub-5537449-1280.jpg'
     },
 
-    location: {},
+    location: {type: String},
     rating: Number,
     beerId: [
       {
