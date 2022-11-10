@@ -15,28 +15,34 @@
 
 </header>
 
+
+
+<div class="profile-favs">
 <div>
+  <h2>Your Favourite Spots:</h2>
   <ul>
     {{#each user.favSpot}}
 
       <li>{{name}}</li>
-      <a href="/beers/details/{{_id}}">Checkout More!</a>
+      <a href="/beers/details/{{_id}}">More info...</a>
 
     {{/each}}
   </ul>
 </div>
 
 <div>
+  <h2>Your Favourite Beers:</h2>
   <ul>
     {{#each user.favBeers}}
 
       <li>{{name}}</li>
-      <a href="/beers/details/{{_id}}">Checkout More!</a>
+      <a href="/beers/details/{{_id}}">More info...</a>
 
     {{/each}}
   </ul>
 </div>
+</div>
 
 <div class="logout">
-  <a href="/logout">Log Out</a>
+  <a class="tag name" href="/logout">Log Out</a>
 </div>
