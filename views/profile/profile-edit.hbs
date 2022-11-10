@@ -1,0 +1,15 @@
+<h1>Edit your profile</h1>
+
+<div>
+    <h3>{{username}}, change your username</h3>
+
+    <form action="/private/profile/edit/{{_id}}" method="post">
+        <p>{{email}}</p>
+        <label for="">Old username:</label>
+        <p>{{username}}</p>
+        <label for="">New username:</label>
+        <input type="text" name="username" value="{{username}}">
+
+        <button type="submit">Change username</button>
+    </form>
+</div>

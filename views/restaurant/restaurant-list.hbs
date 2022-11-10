@@ -1,0 +1,20 @@
+<h1>Where does your thirst takes you?</h1>
+<div class="container">
+  {{#each restaurants}}
+    <div class="cards col-sm">
+      <div class="card-item">
+        <div class="card-image">
+          <img src="{{image}}" alt="image of {{name}} bar" />
+        </div>
+        <div class="card-info">
+          <h2 class="card-title">{{name}}</h2>
+          <p class="card-intro"><p>Rating: {{rating}}</p>
+            <p class="card-intro">Address: <br /> {{location.adress}}</p>
+            <a class="card-intro" href="/restaurants/details/{{_id}}">Checkout
+              More!</a></p>
+        </div>
+      </div>
+    </div>
+
+  {{/each}}
+</div>

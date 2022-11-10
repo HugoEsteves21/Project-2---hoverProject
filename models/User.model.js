@@ -20,6 +20,26 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    restaurantId: [
+      {
+          type: Schema.Types.ObjectId,
+          ref: 'Restaurant'
+    }],
+    beerId: [
+      {
+          type: Schema.Types.ObjectId,
+          ref: 'Beer'
+    }],
+    favSpot: [
+      {
+          type: Schema.Types.ObjectId,
+          ref: 'Restaurant'
+    }],
+    favBeers: [
+      {
+          type: Schema.Types.ObjectId,
+          ref: 'Beer'
+    }],
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`

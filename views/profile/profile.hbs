@@ -1,0 +1,42 @@
+<header>
+  <img
+    src="https://media-cdn.tripadvisor.com/media/photo-s/1b/78/81/ac/jabeerwocky-craft-beer.jpg"
+    alt="Beer profile"
+    class="profile-image"
+  />
+  <h1 class="tag name">Hello, {{user.username}}</h1>
+  <p class="tag location">Logged in with: {{user.email}}</p>
+
+  <a class="tag name" href="/private/profile/edit/{{user._id}}">Edit Account</a>
+
+  <form action='/private/profile/delete/{{user._id}}' method='post'>
+    <button class="tag name" type='submit'>Delete Account</button>
+  </form>
+
+</header>
+
+<div>
+  <ul>
+    {{#each user.favSpot}}
+
+      <li>{{name}}</li>
+      <a href="/beers/details/{{_id}}">Checkout More!</a>
+
+    {{/each}}
+  </ul>
+</div>
+
+<div>
+  <ul>
+    {{#each user.favBeers}}
+
+      <li>{{name}}</li>
+      <a href="/beers/details/{{_id}}">Checkout More!</a>
+
+    {{/each}}
+  </ul>
+</div>
+
+<div class="logout">
+  <a href="/logout">Log Out</a>
+</div>
