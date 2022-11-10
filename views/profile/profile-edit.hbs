@@ -1,6 +1,6 @@
-<h1>Edit your profile</h1>
+<link rel="stylesheet" href="/stylesheets/login-signup.css" />
 
-<div>
+{{!-- <div>
     <h3>{{username}}, change your username</h3>
 
     <form action="/private/profile/edit/{{_id}}" method="post">
@@ -12,4 +12,29 @@
 
         <button type="submit">Change username</button>
     </form>
-</div>
+</div> --}}
+
+<section id="cards">
+  <div class="cards-container">
+
+    <div class="card-log" id="project-1">
+
+      <form action="//private/profile/edit/{{_id}}" method="POST">
+        <h1>Edit your profile</h1>
+        <h3>{{username}}, <hr />CHANGE YOUR USERNAME</h3>
+
+        <p>{{email}}</p>
+
+        <label for="">New username:</label>
+        <input type="text" name="username" value="{{username}}" />
+
+        <button class="btn-1" id="button" type="submit">Change username</button>
+
+        {{#if errorMessage}}
+          <p class="error">{{errorMessage}}</p>
+        {{/if}}
+      </form>
+
+    </div>
+  </div>
+</section>

@@ -1,4 +1,6 @@
-<div id="login-form">
+<link rel="stylesheet" href="/stylesheets/login-signup.css" />
+
+{{!-- <div id="login-form">
   <h2>Log In</h2>
   <form action="/login" method="POST">
 
@@ -17,4 +19,34 @@
       <p class="error">{{errorMessage}}</p>
     {{/if}}
   </form>
-</div>
+</div> --}}
+
+{{! --------------------------------- }}
+
+<section id="cards">
+  <div class="cards-container">
+
+    <div class="card-log" id="project-1">
+
+      <form action="/login" method="POST">
+
+        <label class="label" for="email">
+          Email
+        </label><br />
+        <input type="email" name="email" placeholder="Your email" />
+
+        <label class="label" for="password">
+          Password
+        </label><br />
+        <input type="password" name="password" placeholder="Your password" />
+
+        <button class="btn-1" id="button" type="submit">Log In</button>
+
+        {{#if errorMessage}}
+          <p class="error">{{errorMessage}}</p>
+        {{/if}}
+      </form>
+
+    </div>
+  </div>
+</section>

@@ -1,4 +1,12 @@
-<h1>Where does your thirst takes you?</h1>
+<div>
+  <h1 style="float: left;">Where does your thirst takes you?</h1>
+  <div class="create-button">
+    <form action="/restaurants/create" method="get">
+      <button class="tag2" type="submit">Create your Bar</button>
+    </form>
+  </div>
+</div>
+
 <div class="container">
   {{#each restaurants}}
     <div class="cards col-sm">
@@ -9,7 +17,7 @@
         <div class="card-info">
           <h2 class="card-title">{{name}}</h2>
           <p class="card-intro"><p>Rating: {{rating}}</p>
-            <p class="card-intro">Address: <br /> {{location.adress}}</p>
+            <p class="card-intro">Address: <br /> {{location}}</p>
             <a class="card-intro" href="/restaurants/details/{{_id}}">Checkout
               More!</a></p>
         </div>

@@ -44,7 +44,7 @@ router.get('/restaurants/details/:id', isLoggedIn, async (req, res, next) => {
 
     const allBeers = await Beer.find();
 
-    res.render('restaurant/restaurant-details', {restaurant,  allBeers, isFav} );
+    res.render('restaurant/restaurant-details', { restaurant,  allBeers, isFav } );
         
     } catch (error) {
         console.log(error);
@@ -109,6 +109,55 @@ router.post('/restaurants/details/:id', isLoggedIn, async (req, res, next) => {
 });
 
 
+router.get('/restaurants/create', isLoggedIn, async (req, res, next) => {
+    
+    try {
+        const beers = await Beer.find();
+        
+        res.render('restaurant/restaurant-create', {beers});
+
+    } catch (error) {
+        console.log(error);
+        next(error);
+    }
+
+});
+
+
+router.post('/restaurants/create', fileUploader.single('image'), async (req, res, next) => {
+    
+    const { name, location, rating, beerId } = req.body;
+    
+
+    try {
+        const currentUser = req.session.currentUser._id;
+        let image;
+
+        if(req.file){
+
+            image = req.file.path
+
+        }  else {
+            image = 'https://i.ibb.co/zxRZ9FC/pub-5537449-1280.jpg';
+        }
+            
+            const createdRestaurant = await Restaurant.create({ name, image, location, rating });
+            const newRestaurantId = createdRestaurant._id
+            
+            const restaurantUpdate = await Restaurant.findByIdAndUpdate(newRestaurantId, { $push: { beerId: beerId }});
+            const beerUpdate = await Beer.findByIdAndUpdate(beerId, { $push: { restaurantId: newRestaurantId }});
+            const beerUpdateUser = await User.findByIdAndUpdate(currentUser, { $push: { beerId: beerId }});
+            const restaurantUpdateUser = await User.findByIdAndUpdate(currentUser, { $push: { restaurantId: newRestaurantId }});
+          
+            res.redirect(`/restaurants/details/${newRestaurantId}`);
+        
+    } catch (error) {
+        console.log(error);
+        next(error);
+    }
+});
+
+
 router.get('/beers', isLoggedIn, async (req, res, next) => {
 
     try {
@@ -141,7 +190,7 @@ router.get('/beers/details/:id', isLoggedIn, async (req, res, next) => {
 
     const allRestaurants = await Restaurant.find();
 
-    res.render('beer/beer-details', {beer,  allRestaurants, isFav} );
+    res.render('beer/beer-details', { beer,  allRestaurants, isFav } );
         
     } catch (error) {
         console.log(error);
@@ -307,11 +356,18 @@ router.get('/search/', isLoggedIn, async (req, res, next) => {
     try {
         const searchBeers = await Beer.find(
             {$or: 
-                [{'name': name }
-                /* {'style': style},
-                {'brewery': brewery},
-                {'brand': brand}, */
+                [{name: {$regex: name } },
+                 {style: {$regex: name }},
+                {brewery: {$regex: name }},
+                {brand: {$regex: name }}, 
             ]});
+        /* const searchBeers = await Beer.find(
+            {name: 
+                {$regex: name }
+                 {'style': style},
+                {'brewery': brewery},
+                {'brand': brand},
+            }); */
         
         console.log(searchBeers);
 

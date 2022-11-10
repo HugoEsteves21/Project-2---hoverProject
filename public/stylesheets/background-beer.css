@@ -1,0 +1,344 @@
+/* html {
+    height: 100%;
+    background: #da5900;
+    background: radial-gradient(circle, #fbb600, #da5900);
+    overflow: hidden;
+}
+body {
+    background: transparent;
+}
+#foam {
+    position: inherit;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+    background: linear-gradient(#fff, #fff 5%, rgba(255, 255, 255, 0) 25%, rgba(255, 255, 255, 0));
+}
+
+
+.bottom-particles {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+.bottom-particles .bubble {
+    opacity: 0;
+    position: absolute;
+    bottom: -2.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    -webkit-filter: blur(4px);
+    filter: blur(4px);
+}
+.bottom-particles .bubble:nth-child(1) {
+    left: 7%;
+    animation: blow 7376ms infinite;
+    animation-delay: 5725ms;
+}
+.bottom-particles .bubble:nth-child(2) {
+    left: 77%;
+    animation: blow 11421ms infinite;
+    animation-delay: 2623ms;
+}
+.bottom-particles .bubble:nth-child(3) {
+    left: 80%;
+    animation: blow 5000ms infinite;
+    animation-delay: 1825ms;
+}
+.bottom-particles .bubble:nth-child(4) {
+    left: 58%;
+    animation: blow 5000ms infinite;
+    animation-delay: 8879ms;
+}
+.bottom-particles .bubble:nth-child(5) {
+    left: 34%;
+    animation: blow 5000ms infinite;
+    animation-delay: 10612ms;
+}
+.bottom-particles .bubble:nth-child(6) {
+    left: 34%;
+    animation: blow 11428ms infinite;
+    animation-delay: 5353ms;
+}
+.bottom-particles .bubble:nth-child(7) {
+    left: 61%;
+    animation: blow 14673ms infinite;
+    animation-delay: 5381ms;
+}
+.bottom-particles .bubble:nth-child(8) {
+    left: 87%;
+    animation: blow 8562ms infinite;
+    animation-delay: 3775ms;
+}
+.bottom-particles .bubble:nth-child(9) {
+    left: 70%;
+    animation: blow 5000ms infinite;
+    animation-delay: 5222ms;
+}
+.bottom-particles .bubble:nth-child(10) {
+    left: 34%;
+    animation: blow 7622ms infinite;
+    animation-delay: 2308ms;
+}
+.bottom-particles .bubble:nth-child(11) {
+    left: 78%;
+    animation: blow 13162ms infinite;
+    animation-delay: 5283ms;
+}
+.bottom-particles .bubble:nth-child(12) {
+    left: 45%;
+    animation: blow 5000ms infinite;
+    animation-delay: 108ms;
+}
+.bottom-particles .bubble:nth-child(13) {
+    left: 17%;
+    animation: blow 12603ms infinite;
+    animation-delay: 6369ms;
+}
+.bottom-particles .bubble:nth-child(14) {
+    left: 90%;
+    animation: blow 14158ms infinite;
+    animation-delay: 7314ms;
+}
+.bottom-particles .bubble:nth-child(15) {
+    left: 5%;
+    animation: blow 5000ms infinite;
+    animation-delay: 4156ms;
+}
+.bottom-particles .bubble:nth-child(16) {
+    left: 12%;
+    animation: blow 11614ms infinite;
+    animation-delay: 10728ms;
+}
+.bottom-particles .bubble:nth-child(17) {
+    left: 84%;
+    animation: blow 6253ms infinite;
+    animation-delay: 3059ms;
+}
+.bottom-particles .bubble:nth-child(18) {
+    left: 60%;
+    animation: blow 7048ms infinite;
+    animation-delay: 10189ms;
+}
+.bottom-particles .bubble:nth-child(19) {
+    left: 30%;
+    animation: blow 9978ms infinite;
+    animation-delay: 11473ms;
+}
+.bottom-particles .bubble:nth-child(20) {
+    left: 60%;
+    animation: blow 13771ms infinite;
+    animation-delay: 4241ms;
+}
+.bottom-particles .bubble:nth-child(21) {
+    left: 45%;
+    animation: blow 5000ms infinite;
+    animation-delay: 8768ms;
+}
+.bottom-particles .bubble:nth-child(22) {
+    left: 88%;
+    animation: blow 10544ms infinite;
+    animation-delay: 11592ms;
+}
+.bottom-particles .bubble:nth-child(23) {
+    left: 61%;
+    animation: blow 5000ms infinite;
+    animation-delay: 2419ms;
+}
+.bottom-particles .bubble:nth-child(24) {
+    left: 94%;
+    animation: blow 11335ms infinite;
+    animation-delay: 6001ms;
+}
+.bottom-particles .bubble:nth-child(25) {
+    left: 71%;
+    animation: blow 5000ms infinite;
+    animation-delay: 2505ms;
+}
+.bottom-particles .bubble:nth-child(26) {
+    left: 27%;
+    animation: blow 5000ms infinite;
+    animation-delay: 2765ms;
+}
+.bottom-particles .bubble:nth-child(27) {
+    left: 49%;
+    animation: blow 5000ms infinite;
+    animation-delay: 10830ms;
+}
+.bottom-particles .bubble:nth-child(28) {
+    left: 76%;
+    animation: blow 7107ms infinite;
+    animation-delay: 654ms;
+}
+.bottom-particles .bubble:nth-child(29) {
+    left: 71%;
+    animation: blow 5000ms infinite;
+    animation-delay: 64ms;
+}
+.bottom-particles .bubble:nth-child(30) {
+    left: 33%;
+    animation: blow 5000ms infinite;
+    animation-delay: 313ms;
+}
+.bottom-particles .bubble:nth-child(31) {
+    left: 8%;
+    animation: blow 7620ms infinite;
+    animation-delay: 11040ms;
+}
+.bottom-particles .bubble:nth-child(32) {
+    left: 77%;
+    animation: blow 14287ms infinite;
+    animation-delay: 3648ms;
+}
+.bottom-particles .bubble:nth-child(33) {
+    left: 90%;
+    animation: blow 5000ms infinite;
+    animation-delay: 10352ms;
+}
+.bottom-particles .bubble:nth-child(34) {
+    left: 2%;
+    animation: blow 5372ms infinite;
+    animation-delay: 1965ms;
+}
+.bottom-particles .bubble:nth-child(35) {
+    left: 25%;
+    animation: blow 5000ms infinite;
+    animation-delay: 2660ms;
+}
+.bottom-particles .bubble:nth-child(36) {
+    left: 71%;
+    animation: blow 5244ms infinite;
+    animation-delay: 9915ms;
+}
+.bottom-particles .bubble:nth-child(37) {
+    left: 72%;
+    animation: blow 5000ms infinite;
+    animation-delay: 614ms;
+}
+.bottom-particles .bubble:nth-child(38) {
+    left: 47%;
+    animation: blow 5000ms infinite;
+    animation-delay: 9576ms;
+}
+.bottom-particles .bubble:nth-child(39) {
+    left: 11%;
+    animation: blow 5000ms infinite;
+    animation-delay: 1249ms;
+}
+.bottom-particles .bubble:nth-child(40) {
+    left: 4%;
+    animation: blow 10141ms infinite;
+    animation-delay: 7504ms;
+}
+@keyframes blow {
+    0% {
+        opacity: 0;
+        transform: translate(0, 0);
+   }
+    20% {
+        opacity: 1;
+   }
+    100% {
+        opacity: 0;
+        transform: translate(0, -100vh) scale(0.2);
+   }
+}
+ */
+
+ 
+
+ @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+ body {
+	 background-color: #1b1b1b;
+}
+ h2 {
+	 margin: 0;
+	 color: white;
+	 font-family: "Montserrat", sans-serif;
+	 letter-spacing: 1px;
+	 font-weight: 400;
+	 font-size: 1em;
+}
+ .beer__container {
+	 position: relative;
+	 max-width: 960px;
+	 margin: 0 auto;
+	 padding: 4em 2em;
+	 z-index: 2;
+}
+ .beer__container .beer__kitchen {
+	 background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/173991/in-the-kitchen.png);
+	 background-size: 100% auto;
+	 background-position: top center;
+	 background-repeat: no-repeat;
+	 width: 100%;
+	 max-width: 480px;
+	 height: 3em;
+}
+ @-webkit-keyframes bubbles {
+	 0% {
+		 visibility: visible;
+		 transform: scale(0);
+		 top: 100%;
+	}
+	 15% {
+		 transform: scale(1);
+		 top: 100%;
+	}
+	 100% {
+		 top: -100%;
+		 transform: translateY(-10%);
+	}
+}
+ html, body {
+	 margin: 0;
+	 padding: 0;
+}
+ .beer {
+	 position: relative;
+	 height: 400px;
+	 overflow: hidden;
+	 background: #c05600;
+	/* Old browsers */
+	 background: -moz-linear-gradient(left, rgba(192, 86, 0, 1) 0%, rgba(220, 112, 0, 1) 21%, rgba(232, 124, 0, 1) 51%, rgba(232, 124, 0, 1) 81%, rgba(220, 112, 0, 1) 100%);
+	/* FF3.6+ */
+	 background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(192, 86, 0, 1)), color-stop(21%, rgba(220, 112, 0, 1)), color-stop(51%, rgba(232, 124, 0, 1)), color-stop(81%, rgba(232, 124, 0, 1)), color-stop(100%, rgba(220, 112, 0, 1)));
+	/* Chrome,Safari4+ */
+	 background: -webkit-linear-gradient(left, rgba(192, 86, 0, 1) 0%, rgba(220, 112, 0, 1) 21%, rgba(232, 124, 0, 1) 51%, rgba(232, 124, 0, 1) 81%, rgba(220, 112, 0, 1) 100%);
+	/* Chrome10+,Safari5.1+ */
+	 background: -o-linear-gradient(left, rgba(192, 86, 0, 1) 0%, rgba(220, 112, 0, 1) 21%, rgba(232, 124, 0, 1) 51%, rgba(232, 124, 0, 1) 81%, rgba(220, 112, 0, 1) 100%);
+	/* Opera 11.10+ */
+	 background: -ms-linear-gradient(left, rgba(192, 86, 0, 1) 0%, rgba(220, 112, 0, 1) 21%, rgba(232, 124, 0, 1) 51%, rgba(232, 124, 0, 1) 81%, rgba(220, 112, 0, 1) 100%);
+	/* IE10+ */
+	 background: linear-gradient(to right, rgba(192, 86, 0, 1) 0%, rgba(220, 112, 0, 1) 21%, rgba(232, 124, 0, 1) 51%, rgba(232, 124, 0, 1) 81%, rgba(220, 112, 0, 1) 100%);
+	/* W3C */
+	 filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#c05600', endColorstr='#dc7000',GradientType=1);
+	/* IE6-9 */
+}
+ .bubble {
+	 position: absolute;
+	 background-color: transparent;
+	 background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/173991/bubble.png);
+	 background-size: cover;
+	 background-position: center center;
+	 border-radius: 100%;
+	 opacity: 0.5;
+	 visibility: hidden;
+	 -webkit-filter: blur(1px);
+	 -moz-filter: blur(1px);
+	 -o-filter: blur(1px);
+	 -ms-filter: blur(1px);
+	 filter: blur(1px);
+	 -webkit-animation: bubbles 7s infinite;
+	 -moz-animation: bubbles 7s infinite;
+	 -o-animation: bubbles 7s infinite;
+	 animation: bubbles 7s infinite;
+	 z-index: 1;
+}
+ 

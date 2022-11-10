@@ -1,11 +1,23 @@
 {{#each searchBeers}}
 
-    <div>
-        <h1>{{this.name}}</h1>
-        <p>{{this.style}}</p>
-        <p>{{this.brewery}}</p>
-        <p>{{this.brand}}</p>
+  <div class="container-2">
+    <div class="cards">
+      <div class="card-item-2">
+        <div class="card-image">
+
+          <img src="{{this.imageUrl}}" alt="beer image" />
+
+        </div>
+
+        <div class="card-info-2">
+
+          <h3 class="card-title-2">{{this.name}}</h3>
+          <p><strong>Style?</strong> {{this.style}}</p>
+          <p><strong>Brewery?</strong> {{this.brewery}}</p>
+          <p><strong>Brand?</strong> {{this.brand}}</p>
+
+        </div>
+      </div>
     </div>
-
-
+  </div>
 {{/each}}
