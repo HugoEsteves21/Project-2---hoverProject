@@ -24,7 +24,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   margin: 0;
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
 .container {
@@ -95,6 +95,7 @@ body {
   opacity: 0.91;
   margin: 0 auto;
   text-align: center;
+  width: 100%;
 }
 
 .card-image img {
@@ -210,3 +211,20 @@ header .profile-image:hover {
 }
 
 /* -------------------------------------------- */
+
+.btn-success {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: #9c7115;
+  --bs-btn-border-color: #9c7115;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #e8a20c;
+  --bs-btn-hover-border-color: #3f2e08;
+  --bs-btn-focus-shadow-rgb: 60, 153, 110;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #9c7115;
+  --bs-btn-active-border-color: #9c7115;
+  --bs-btn-active-shadow: inset 0 3px 5pxrgba (0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: #9c7115;
+  --bs-btn-disabled-border-color: #9c7115;
+}
